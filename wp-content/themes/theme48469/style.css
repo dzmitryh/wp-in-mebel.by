@@ -1,0 +1,20 @@
+/*--
+	Theme Name: theme48469
+	Theme URI: http://info.template-help.com/help/
+	Description: A theme for Wordpress 3.8.x
+	Author: Template_Help.com
+	Author URI: http://info.template-help.com/help/
+	Template: CherryFramework
+	Version: 3.1
+	MotoPress Version: 1.0
+--*/
+
+/* ----------------------------------------
+	Please, You may put custom css here
+---------------------------------------- */
+
+.social_links_align {
+    margin-left: auto;
+    margin-right: auto;
+    display: block
+}
