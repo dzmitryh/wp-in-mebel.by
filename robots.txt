@@ -25,4 +25,4 @@ Disallow: /wp-comments
 Disallow: /cgi-bin
 Disallow: *?s=
 
-Sitemap: http://www.in-mebel.by/wordpress/sitemap.xml
+Sitemap: http://www.in-mebel.by/sitemap.xml

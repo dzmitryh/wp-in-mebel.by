@@ -1,219 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/</loc>
+			<loc>http://www.in-mebel.by/</loc>
 			<lastmod>2014-08-31 20:43:10</lastmod>
 			<changefreq>monthly</changefreq>
 			<priority>1,0</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/%d1%81%d0%bf%d0%b0%d0%bb%d1%8c%d0%bd%d0%b8/%d0%bc%d0%b5%d0%b1%d0%b5%d0%bb%d1%8c-%d0%b4%d0%bb%d1%8f-%d1%81%d0%bf%d0%b0%d0%bb%d1%8c%d0%bd%d0%b8/</loc>
+			<loc>http://www.in-mebel.by/%d1%81%d0%bf%d0%b0%d0%bb%d1%8c%d0%bd%d0%b8/%d0%bc%d0%b5%d0%b1%d0%b5%d0%bb%d1%8c-%d0%b4%d0%bb%d1%8f-%d1%81%d0%bf%d0%b0%d0%bb%d1%8c%d0%bd%d0%b8/</loc>
 			<lastmod>2014-08-31</lastmod>
 			<changefreq>always</changefreq>
+			<priority>0.9</priority>
+		</url>
+		<url>
+			<loc>http://www.in-mebel.by/kitchens/%d0%bc%d0%b5%d0%b1%d0%b5%d0%bb%d1%8c-%d0%b4%d0%bb%d1%8f-%d0%ba%d1%83%d1%85%d0%bd%d0%b8/</loc>
+			<lastmod>2014-08-31</lastmod>
+			<changefreq>always</changefreq>
+			<priority>0.9</priority>
+		</url>
+		<url>
+			<loc>http://www.in-mebel.by/portfolio-view/wardrobe1/</loc>
+			<lastmod>2014-09-05</lastmod>
+			<changefreq>weekly</changefreq>
 			<priority>1</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/kitchens/%d0%bc%d0%b5%d0%b1%d0%b5%d0%bb%d1%8c-%d0%b4%d0%bb%d1%8f-%d0%ba%d1%83%d1%85%d0%bd%d0%b8/</loc>
-			<lastmod>2014-08-31</lastmod>
-			<changefreq>always</changefreq>
+			<loc>http://www.in-mebel.by/portfolio-view/kitchen1/</loc>
+			<lastmod>2014-09-05</lastmod>
+			<changefreq>weekly</changefreq>
 			<priority>1</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio-view/wardrobe1/</loc>
-			<lastmod>2014-09-02</lastmod>
+			<loc>http://www.in-mebel.by/portfolio-view/interiors_1/</loc>
+			<lastmod>2014-09-05</lastmod>
 			<changefreq>weekly</changefreq>
-			<priority>0.8</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio-view/kitchen1/</loc>
-			<lastmod>2014-09-02</lastmod>
-			<changefreq>weekly</changefreq>
-			<priority>0.8</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio-view/gallery-format/</loc>
-			<lastmod>2014-08-31</lastmod>
-			<changefreq>weekly</changefreq>
-			<priority>0.8</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio-view/mountains/</loc>
-			<lastmod>2014-09-02</lastmod>
-			<changefreq>weekly</changefreq>
-			<priority>0.8</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio-view/child/</loc>
-			<lastmod>2014-09-02</lastmod>
-			<changefreq>weekly</changefreq>
-			<priority>0.8</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio-view/image-format/</loc>
-			<lastmod>2014-09-02</lastmod>
-			<changefreq>weekly</changefreq>
-			<priority>0.8</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio-view/in-faucibus-risus/</loc>
-			<lastmod>2014-08-31</lastmod>
-			<changefreq>weekly</changefreq>
-			<priority>0.8</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio-view/sed-blandit-massa-vel/</loc>
-			<lastmod>2014-08-31</lastmod>
-			<changefreq>weekly</changefreq>
-			<priority>0.8</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio-view/feugiat-vitae-leo/</loc>
-			<lastmod>2014-08-31</lastmod>
-			<changefreq>weekly</changefreq>
-			<priority>0.8</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio/portfolio-3/category-3/</loc>
-			<lastmod>2013-07-04</lastmod>
-			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio/portfolio-3/category-2/</loc>
-			<lastmod>2013-07-04</lastmod>
-			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio/portfolio-3/category-1/</loc>
-			<lastmod>2013-07-04</lastmod>
-			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/wardrobs/post1/</loc>
-			<lastmod>2014-08-31</lastmod>
-			<changefreq>always</changefreq>
 			<priority>1</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio/portfolio-4/</loc>
-			<lastmod>2014-08-30</lastmod>
-			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio/portfolio-3/</loc>
-			<lastmod>2014-08-30</lastmod>
-			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio/portfolio-2/</loc>
-			<lastmod>2014-08-30</lastmod>
-			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio-view/in-faucibus/</loc>
-			<lastmod>2014-08-31</lastmod>
+			<loc>http://www.in-mebel.by/portfolio-view/mountains/</loc>
+			<lastmod>2014-09-05</lastmod>
 			<changefreq>weekly</changefreq>
+			<priority>1</priority>
+		</url>
+		<url>
+			<loc>http://www.in-mebel.by/portfolio-view/child/</loc>
+			<lastmod>2014-09-05</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>1</priority>
+		</url>
+		<url>
+			<loc>http://www.in-mebel.by/portfolio-view/bedrooms/</loc>
+			<lastmod>2014-09-05</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>1</priority>
+		</url>
+		<url>
+			<loc>http://www.in-mebel.by/portfolio-view/computer_tables/</loc>
+			<lastmod>2014-09-05</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>1</priority>
+		</url>
+		<url>
+			<loc>http://www.in-mebel.by/portfolio-view/lobby/</loc>
+			<lastmod>2014-09-05</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>1</priority>
+		</url>
+		<url>
+			<loc>http://www.in-mebel.by/portfolio-view/wardrobes-bed/</loc>
+			<lastmod>2014-09-05</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>1</priority>
+		</url>
+		<url>
+			<loc>http://www.in-mebel.by/wardrobs/post1/</loc>
+			<lastmod>2014-08-31</lastmod>
+			<changefreq>always</changefreq>
+			<priority>0.9</priority>
+		</url>
+		<url>
+			<loc>http://www.in-mebel.by/portfolio/portfolio-4/</loc>
+			<lastmod>2014-08-30</lastmod>
+			<changefreq>monthly</changefreq>
 			<priority>0.8</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio-view/malesuada-fames-ac/</loc>
-			<lastmod>2014-08-31</lastmod>
-			<changefreq>weekly</changefreq>
+			<loc>http://www.in-mebel.by/portfolio/portfolio-3/</loc>
+			<lastmod>2014-08-30</lastmod>
+			<changefreq>monthly</changefreq>
 			<priority>0.8</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio-view/donec-tellus-leo/</loc>
-			<lastmod>2014-08-31</lastmod>
-			<changefreq>weekly</changefreq>
+			<loc>http://www.in-mebel.by/portfolio/portfolio-2/</loc>
+			<lastmod>2014-08-30</lastmod>
+			<changefreq>monthly</changefreq>
 			<priority>0.8</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/about/archives/</loc>
+			<loc>http://www.in-mebel.by/portfolio-view/interiors_2/</loc>
+			<lastmod>2014-09-05</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>1</priority>
+		</url>
+		<url>
+			<loc>http://www.in-mebel.by/portfolio-view/interiors_3/</loc>
+			<lastmod>2014-09-05</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>1</priority>
+		</url>
+		<url>
+			<loc>http://www.in-mebel.by/portfolio-view/interiors_4/</loc>
+			<lastmod>2014-09-05</lastmod>
+			<changefreq>weekly</changefreq>
+			<priority>1</priority>
+		</url>
+		<url>
+			<loc>http://www.in-mebel.by/about/archives/</loc>
 			<lastmod>2014-08-31</lastmod>
 			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
+			<priority>0.8</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/about/testi/</loc>
-			<lastmod>2014-08-30</lastmod>
-			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/</loc>
+			<loc>http://www.in-mebel.by/</loc>
 			<lastmod>2014-08-31</lastmod>
 			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
+			<priority>0.8</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/privacy-policy/</loc>
+			<loc>http://www.in-mebel.by/blog/</loc>
 			<lastmod>2014-08-30</lastmod>
 			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
+			<priority>0.8</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/blog/</loc>
-			<lastmod>2014-08-30</lastmod>
-			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/faq/odio-gravida-atcursus-neluctus-a-lorem-maecenas-tristiqu-sters-port-rsen-mate-haslelu-milsie-quqn-smetsre-2/</loc>
-			<lastmod>2014-08-31</lastmod>
+			<loc>http://www.in-mebel.by/faq/faqs_1/</loc>
+			<lastmod>2014-09-05</lastmod>
 			<changefreq>monthly</changefreq>
 			<priority>0.7</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/slide-view/slide-4/</loc>
+			<loc>http://www.in-mebel.by/slide-view/slide-4/</loc>
 			<lastmod>2014-08-30</lastmod>
 			<changefreq>yearly</changefreq>
 			<priority>0.6</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/slide-view/slide-3/</loc>
+			<loc>http://www.in-mebel.by/slide-view/slide-3/</loc>
 			<lastmod>2014-08-30</lastmod>
 			<changefreq>yearly</changefreq>
 			<priority>0.6</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/slide-view/slide-2/</loc>
+			<loc>http://www.in-mebel.by/slide-view/slide-2/</loc>
 			<lastmod>2014-08-30</lastmod>
 			<changefreq>yearly</changefreq>
 			<priority>0.6</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/slide-view/slide-1/</loc>
+			<loc>http://www.in-mebel.by/slide-view/slide-1/</loc>
 			<lastmod>2014-08-30</lastmod>
 			<changefreq>yearly</changefreq>
 			<priority>0.6</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/contacts/</loc>
+			<loc>http://www.in-mebel.by/contacts/</loc>
 			<lastmod>2014-08-30</lastmod>
 			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
+			<priority>0.8</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/about/faqs/</loc>
+			<loc>http://www.in-mebel.by/about/faqs/</loc>
 			<lastmod>2011-07-14</lastmod>
 			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
+			<priority>0.8</priority>
 		</url>
 		<url>
-			<loc>http://www.in-mebel.by/wordpress/portfolio/</loc>
+			<loc>http://www.in-mebel.by/portfolio/</loc>
 			<lastmod>2014-08-30</lastmod>
 			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
-		</url>
-		<url>
-			<loc>http://www.in-mebel.by/wordpress/about/</loc>
-			<lastmod>2014-08-30</lastmod>
-			<changefreq>monthly</changefreq>
-			<priority>0.9</priority>
+			<priority>0.8</priority>
 		</url>
 </urlset>

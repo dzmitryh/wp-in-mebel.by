@@ -1,0 +1,9 @@
+#AuthType Basic
+#AuthUserFile /home/inmebelb/public_html/passwd
+#AuthName wp-admin
+#require valid-user
+
+<files wp-config.php>
+order allow,deny
+deny from all
+</files>
