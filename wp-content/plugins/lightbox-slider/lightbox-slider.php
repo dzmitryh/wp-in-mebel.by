@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Lightbox Slider
- * Version: 0.6
+ * Version: 1.1
  * Description: A Great Lightbox plugin to create and display various types of images galleries on WordPress blog.
  * Author: Weblizar
  * Author URI: http://www.weblizar.com
@@ -93,6 +93,9 @@ function Lightbox_Slider_init() {
     add_meta_box('Lightbox_Slider_meta', __('Add New Images', WEBLIZAR_LBS_TEXT_DOMAIN), 'lightbox_slider_function', 'lightbox-slider', 'normal', 'high');
     
 	add_action('save_post','light_box_meta_save');
+	add_meta_box(__('Plugin Shortcode', WEBLIZAR_LBS_TEXT_DOMAIN) , __('Plugin Shortcode', WEBLIZAR_LBS_TEXT_DOMAIN), 'lbs_plugin_shortcode', 'lightbox-slider', 'side', 'low');
+	add_meta_box(__('Rate us on WordPress', WEBLIZAR_LBS_TEXT_DOMAIN) , __('Rate us on WordPress', WEBLIZAR_LBS_TEXT_DOMAIN), 'lbs_rate_us_function', 'lightbox-slider', 'side', 'low');
+    
 	add_meta_box(__('Upgrade To Pro Version', WEBLIZAR_LBS_TEXT_DOMAIN) , __('Upgrade To Pro Version', WEBLIZAR_LBS_TEXT_DOMAIN), 'lbs_upgrade_to_pro_function', 'lightbox-slider', 'side', 'low');
     add_meta_box(__('Pro Features', WEBLIZAR_LBS_TEXT_DOMAIN) , __('Pro Features', WEBLIZAR_LBS_TEXT_DOMAIN), 'lbs_pro_features', 'lightbox-slider', 'side', 'low');
 	wp_enqueue_script('theme-preview');
@@ -101,6 +104,51 @@ function Lightbox_Slider_init() {
     wp_enqueue_style('lbs-meta-css', WEBLIZAR_LBS_PLUGIN_URL.'css/rpg-meta.css');
     wp_enqueue_style('thickbox');
 }
+
+/**
+plugin shortcode
+**/
+function lbs_plugin_shortcode(){
+?>
+<p>Use below shortcode in any Page/Post to publish your Lightbox Slider</p>
+		<input readonly="readonly" type="text" value="<?php echo "[LBS]"; ?>"> 
+<?php
+} 
+
+/**
+Rate us 
+**/
+
+function lbs_rate_us_function(){
+?>
+<div style="text-align:center">
+<h3>If you like our plugin then please show us some love </h3>
+
+<style>
+.wrg-rate-us span.dashicons{
+width: 30px;
+height: 30px;
+}
+.wrg-rate-us span.dashicons-star-filled:before {
+content: "\f155";
+font-size: 30px;
+}
+</style>
+
+<a class="wrg-rate-us" style="text-align:center; text-decoration: none;font:normal 30px/l;" href="https://wordpress.org/plugins/lightbox-slider/" target="_blank">
+			<span class="dashicons dashicons-star-filled"></span>
+			<span class="dashicons dashicons-star-filled"></span>
+			<span class="dashicons dashicons-star-filled"></span>
+			<span class="dashicons dashicons-star-filled"></span>
+			<span class="dashicons dashicons-star-filled"></span>
+		</a>
+		<div class="upgrade-to-pro-demo" style="text-align:center;margin-bottom:10px;margin-top:10px;">
+	<a href="https://wordpress.org/plugins/lightbox-slider/" target="_new" class="button button-primary button-hero">Click Here</a>
+</div>
+		</div>
+<?php
+}
+
 
 /**
  * Meta box interface design
@@ -340,3 +388,4 @@ function get_lightbox_slider_pro_page_function() {
  * Lightbox Slider Short Code [LBS]
  */
 require_once("lightbox-slider-short-code.php");
+?>

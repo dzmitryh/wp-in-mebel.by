@@ -16,6 +16,8 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
+define('WP_CACHE', true); //Added by WP-Cache Manager
+define( 'WPCACHEHOME', '/home/inmebelb/public_html/wp-content/plugins/wp-super-cache/' ); //Added by WP-Cache Manager
 define('DB_NAME', 'inmebelb_first');
 
 /** MySQL database username */
@@ -78,7 +80,7 @@ define('WPLANG', 'ru_RU');
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
 
 /* That's all, stop editing! Happy blogging. */
 
@@ -91,3 +93,4 @@ require_once(ABSPATH . 'wp-settings.php');
 
 /** Custom configuration */
 define('DISALLOW_FILE_EDIT', true);
+define('WP_MEMORY_LIMIT', '256M');

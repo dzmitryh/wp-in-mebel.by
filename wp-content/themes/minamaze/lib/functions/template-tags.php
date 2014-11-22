@@ -37,11 +37,11 @@ global $wp_query, $post;
 	<?php elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages ?>
 
 		<?php if ( get_next_posts_link() ) : ?>
-		<div class="nav-previous"><?php next_posts_link( 'Older posts' ); ?></div>
+		<div class="nav-previous"><?php next_posts_link( __( 'Older posts', 'lan-thinkupthemes') ); ?></div>
 		<?php endif; ?>
 
 		<?php if ( get_previous_posts_link() ) : ?>
-		<div class="nav-next"><?php previous_posts_link( 'Newer posts' ); ?></div>
+		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts', 'lan-thinkupthemes') ); ?></div>
 		<?php endif; ?>
 
 	<?php endif; ?>
@@ -63,8 +63,8 @@ global $wp_query, $post;
 	?>
 
 	<nav role="navigation" id="nav-below">
-		<div class="nav-previous"><?php previous_image_link( 'false', '<div class="nav-previous"><span class="meta-icon"><i class="icon-angle-left icon-large"></i></span><span class="meta-nav">Previous</span></div>' ); ?></div>
-		<div class="nav-next"><?php next_image_link( 'false', '<span class="meta-nav">Next</span><span class="meta-icon"><i class="icon-angle-right icon-large"></i></span>' ); ?></div>
+		<div class="nav-previous"><?php previous_image_link( 'false', '<div class="nav-previous"><span class="meta-icon"><i class="icon-angle-left icon-large"></i></span><span class="meta-nav">' . __( 'Previous', 'lan-thinkupthemes') . ' </span></div>' ); ?></div>
+		<div class="nav-next"><?php next_image_link( 'false', '<span class="meta-nav">' . __( 'Next', 'lan-thinkupthemes') . '</span><span class="meta-icon"><i class="icon-angle-right icon-large"></i></span>' ); ?></div>
 	</nav><!-- #image-navigation -->
 
 <?php

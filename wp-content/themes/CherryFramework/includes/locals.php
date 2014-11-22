@@ -67,9 +67,9 @@
 			'last' => __('Last', $domain),
 			'first' => __('First', $domain),
 			'delete' => __('Delete', $domain),
-			'fullwidth' => __('Fullwidth', $domain),
-			'fixed' => __('Fixed', $domain),
-			
+			'fullwidth' => __('Wide', $domain),
+			'fixed' => __('Boxed', $domain),
+
 			//Output Audio
 			'prev' => __('Previous', $domain),
 			'next' => __('Next', $domain),
@@ -78,8 +78,8 @@
 			'stop' => __('Stop', $domain),
 			'mute' => __('Mute', $domain),
 			'unmute' => __('Unmute', $domain),
-			'update_required' => __("<span>Update Required. </span>To play the media you will need to either update your browser to a recent version or update your <a href='http://get.adobe.com/flashplayer/' target='_blank'>Flash plugin</a>.", $domain),
-			
+			'update_required' => __("<span>Update Required. </span>To play the media you will need to either update your browser to a recent version or update your <a href='//get.adobe.com/flashplayer/' target='_blank'>Flash plugin</a>.", $domain),
+
 			//Cherry theme options
 			'cherry_options' => __('Cherry Options', $domain),
 			'customize' => __('Customize', $domain),
@@ -88,7 +88,7 @@
 			'save_options' => __('Save Options', $domain),
 			'restore_defaults' => __('Restore Defaults', $domain),
 			'restore_defaults_desc' => __('Click OK to reset. Any theme settings will be lost!', $domain),
-			
+
 			//general options
 			'general' => __('General', $domain),
 			'body_name' => __('Body styling', $domain),
@@ -97,7 +97,7 @@
 			'background_color' => __('Body Background Color', $domain),
 			'header_image' => __('Header Image', $domain),
 			'header_color' => __('Header Color', $domain),
-			'main_layout_name' => __('Layout', $domain),
+			'main_layout_name' => __('Layout Style', $domain),
 			'main_layout_desc' => __('Select layout for Your site', $domain),
 			'main_bg_name' => __('Main background color', $domain),
 			'main_bg_desc' => __('Change the main background color', $domain),
@@ -108,26 +108,26 @@
 			'links_color_hover' => __('Link color hover', $domain),
 			'links_color_hover_desc' => __('Change the color of link hover state', $domain),
 			'body_text_name' => __('Body Text', $domain),
-			'body_text_desc' => __("Choose your prefered font for body text. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='http://www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
+			'body_text_desc' => __("Choose your prefered font for body text. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='//www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
 			'h1_name' => __('H1 Heading', $domain),
-			'h1_desc' => __("Choose your prefered font for H1 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='http://www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
+			'h1_desc' => __("Choose your prefered font for H1 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='//www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
 			'h2_name' => __('H2 Heading', $domain),
-			'h2_desc' => __("Choose your prefered font for H2 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='http://www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
+			'h2_desc' => __("Choose your prefered font for H2 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='//www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
 			'h3_name' => __('H3 Heading', $domain),
-			'h3_desc' => __("Choose your prefered font for H3 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='http://www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
+			'h3_desc' => __("Choose your prefered font for H3 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='//www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
 			'h4_name' => __('H4 Heading', $domain),
-			'h4_desc' => __("Choose your prefered font for H4 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='http://www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
+			'h4_desc' => __("Choose your prefered font for H4 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='//www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
 			'h5_name' => __('H5 Heading', $domain),
-			'h5_desc' => __("Choose your prefered font for H5 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='http://www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
+			'h5_desc' => __("Choose your prefered font for H5 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='//www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
 			'h6_name' => __('H6 Heading', $domain),
-			'h6_desc' => __("Choose your prefered font for H6 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='http://www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
+			'h6_desc' => __("Choose your prefered font for H6 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='//www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
 			'search_name' => __('Display search box?', $domain),
 			'search_desc' => __('Display search box in the header?', $domain),
 			'breadcrumbs_name' => __('Display breadcrumbs?', $domain),
 			'breadcrumbs_desc' => __('Display breadcrumbs in the page?', $domain),
 			'css_name' => __('Custom CSS', $domain),
 			'css_desc' => __('Want to add any custom CSS code? Put in here, and the rest is taken care of. This overrides any other stylesheets. eg: a.button{color:green}', $domain),
-			
+
 			//Logo & Favicon options
 			'logo' => __('Logo', $domain),
 			'logo_favicon' => __('Logo & Favicon', $domain),
@@ -136,17 +136,17 @@
 			'image_logo' => __('Image Logo', $domain),
 			'text_logo' => __('Text Logo', $domain),
 			'logo_t_name' => __('Logo Typography', $domain),
-			'logo_t_desc' => __("Choose your prefered font for menu. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='http://www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
+			'logo_t_desc' => __("Choose your prefered font for menu. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='//www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
 			'logo_image_path' => __('Logo Image Path', $domain),
-			'logo_image_path_desc' => __('Click Upload or Enter the direct path to your <strong>logo image</strong>. For example <em>http://your_website_url_here/wp-content/themes/themeXXXX/images/logo.png</em>', $domain),
+			'logo_image_path_desc' => __('Click Upload or Enter the direct path to your <strong>logo image</strong>. For example <em>//your_website_url_here/wp-content/themes/themeXXXX/images/logo.png</em>', $domain),
 			'favicon_name' => __('Favicon', $domain),
-			'favicon_desc' => __('Click Upload or Enter the direct path to your <strong>favicon</strong>. For example <em>http://your_website_url_here/wp-content/themes/themeXXXX/favicon.ico</em>', $domain),
+			'favicon_desc' => __('Click Upload or Enter the direct path to your <strong>favicon</strong>. For example <em>//your_website_url_here/wp-content/themes/themeXXXX/favicon.ico</em>', $domain),
 			'logo_color' => __('Logo Color', $domain),
-			
+
 			//Navigation options
 			'navigation' => __('Navigation', $domain),
 			'menu_t_name' => __('Menu Typography', $domain),
-			'menu_t_desc' => __("Choose your prefered font for menu. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='http://www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
+			'menu_t_desc' => __("Choose your prefered font for menu. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href='//www.google.com/webfonts'>Google Web Fonts</a> library.</em>", $domain),
 			'delay_name' => __('Delay', $domain),
 			'delay_desc' => __('Miliseconds delay on mouseout.', $domain),
 			'fade_name' => __('Fade-in animation', $domain),
@@ -166,7 +166,9 @@
 			'mobile_menu_std' => __('Navigate to...', $domain),
 			'header_menu_face' => __('Header Menu Font', $domain),
 			'header_menu_color' => __('Header Menu Color', $domain),
-			
+			'stickup_menu' => __('Use stickUp menu', $domain),
+			'stickup_menu_desc' => __('Do you want to use stickUp menu?', $domain),
+
 			//Slider Settings options
 			'slider' => __('Slider Settings', $domain),
 			'slider_name' => __('Slider', $domain),
@@ -231,6 +233,8 @@
 			'hover_desc' => __('If true the navigation button (prev, next and play/stop buttons) will be visible on hover state only, if false they will be visible always', $domain),
 			'button_name' => __('Play/Pause button', $domain),
 			'button_desc' => __('Display Play/Pause button?', $domain),
+			'pause_on_hover_title' => __('Pause on hover', $domain),
+			'pause_on_hover_desc' => __('Stop slideshow on hover?', $domain),
 			'loader_name' => __('Loader', $domain),
 			'loader_desc' => __('Slider loader', $domain),
 			'pie' => __('Pie', $domain),
@@ -305,6 +309,11 @@
 			'single_post_image_desc' => __('Featured image size on the single page.', $domain),
 			'meta_name' => __('View meta of the blog.', $domain),
 			'meta_desc' => __('Select meta block type which will be displayed on blog and post pages.', $domain),
+			'meta_display_name' => __('Display meta.', $domain),
+			'meta_display_desc' => __('Select where to display meta block.', $domain),
+			'only_blog' => __('Only blog.', $domain),
+			'only_post' => __('Only post.', $domain),
+			'blog_post' => __('Blog and post.', $domain),
 			'excerpt_name' => __('Enable excerpt for blog posts?', $domain),
 			'excerpt_desc' => __('Enable or Disable excerpt for blog posts.', $domain),
 			'button_text_name' => __('Button text for blog posts.', $domain),
@@ -332,7 +341,7 @@
 			'post_dislike_name' => __('Number of dislikes.', $domain),
 			'post_dislike_desc' => __('Should the number of dislikes be displayed?', $domain),
 			//'' => __('', $domain),
-			
+
 			//Portfolio options
 			'portfolio' => __('Portfolio', $domain),
 			'filter_name' => __('Filter', $domain),
@@ -361,13 +370,23 @@
 			'single_folio_layout_desc' => __('Single portfolio layout.', $domain),
 			'fullwidth_sp' => __('Fullwidth', $domain),
 			'grid_sp' => __('Columns', $domain),
+			'single_gallery_layout' => __('Gallery-format post portfolio layout', $domain),
+			'single_gallery_layout_desc' => __('Select portfolio layout for gallery-format post.', $domain),
 			'portfolio_2_name' => __('Portfolio 2 columns items amount', $domain),
 			'portfolio_2_desc' => __('Portfolio items amount for Portfolio 2 columns template.', $domain),
 			'portfolio_3_name' => __('Portfolio 3 columns items amount', $domain),
 			'portfolio_3_desc' => __('Portfolio items amount for Portfolio 3 columns template.', $domain),
 			'portfolio_4_name' => __('Portfolio 4 columns items amount', $domain),
 			'portfolio_4_desc' => __('Portfolio items amount for Portfolio 4 columns template.', $domain),
-			
+			'folio_filter_orderby' => __('Sort filter by parameter (orderby)', $domain),
+			'folio_filter_orderby_desc' => __('Sort filter alphabetically or by unique category ID.', $domain),
+			'folio_filter_order' => __('Sort order for filter', $domain),
+			'folio_filter_order_desc' => __('Sort order for filter (either ascending or descending).', $domain),
+			'folio_posts_orderby' => __('Sort retrieved posts by parameter (orderby)', $domain),
+			'folio_posts_orderby_desc' => __('Sort retrieved posts by parameter.', $domain),
+			'folio_posts_order' => __('Sort order for posts', $domain),
+			'folio_posts_order_desc' => __('Designates the ascending or descending order of the "orderby" parameter.', $domain),
+
 			//Footer options
 			'footer' => __('Footer', $domain),
 			'copyright_text_name' => __('Footer copyright text', $domain),
@@ -379,10 +398,10 @@
 			'footer_menu_name' => __('Display Footer Menu?', $domain),
 			'footer_menu_desc' => __('Do you want to display footer menu?', $domain),
 			'footer_menu_typography_name' => __('Footer Menu Typography', $domain),
-			'footer_menu_typography_desc' => __('Choose your prefered font for menu. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href="http://www.google.com/webfonts">Google Web Fonts</a> library.</em>', $domain),
+			'footer_menu_typography_desc' => __('Choose your prefered font for menu. <em>Note: fonts marked with <strong>*</strong> symbol will be loaded from the <a href="//www.google.com/webfonts">Google Web Fonts</a> library.</em>', $domain),
 			'footer_menu_face' => __('Footer Menu Font', $domain),
 			'footer_menu_color' => __('Footer Menu Color', $domain),
-			
+
 			//Other cherry theme options
 			'no_repeat' => __('No Repeat', $domain),
 			'r_h' => __('Repeat Horizontally', $domain),
@@ -399,29 +418,7 @@
 			'b_r' => __('Bottom Right', $domain),
 			's_n' => __('Scroll Normally', $domain),
 			'f_p' => __('Fixed in Place', $domain),
-			
-			//import & export options
-			'Step_1' => __('<span>Step <i>1</i></span>Theme Options Import', $domain),
-			'Select the file that contains Theme Options' => __('Select the file that contains Theme Options (e.g. <b>options.json</b> )', $domain),
-			'Upload File and Import' => __('Upload File and Import', $domain),
-			'Step_1_export' => __('<span>Step <i>1</i></span>Theme Options Export', $domain),
-			'Welcome to the OptionsFramework Backup Manager' => __('Welcome to the OptionsFramework Backup Manager.', $domain),
-			'problem_importing' => __('There was a problem importing your settings. Please Try again.', $domain),
-			'problem_exporting' => __('There was a problem exporting your settings. Please Try again.', $domain),
-			'provided_is_invalid.' => __('The import file you\'ve provided is invalid. Please try again.', $domain),
-			
-			'step_1_export_widget' => __('<span>Step <i>1</i></span> Widget Settings Export', $domain),
-			'step_3' => __('<span>Step <i>3</i></span> Widget Settings Import', $domain),
-			'step_4' => __('<span>Step <i>4</i></span> Widget Settings Import', $domain),
-			'import_settings' => __('Import Settings', $domain),
-			'please_try_again' => __("Incorrect file. Please, <a href='admin.php?page=options-framework-import&amp;step=1'>try again</a>.", $domain),
-			'select_the_file' => __('Select the file that contains Widget Settings (e.g. <b>your_template_package/sources/sample_data/widgets.json</b>)', $domain),
-			'show_widget_settings' => __('Show Widget Settings', $domain),
-			'no_widget' => __('Your have no widgets. Please, click next to go to the next step.', $domain),
-			'widget_import_warning' => __('Disable the widgets you don\'t need and click "Next". All the selected widgets will be imported into the theme by default.', $domain),
-			'go_to_widgets' => __('go to widgets', $domain),
-			'empty_widgets' => __('File widgets.json incorrect or empty. For this reason, none of the widget will be imported into your theme.', $domain),
-			
+
 			//wordpress-importer.php
 			'sorry' => __('Sorry, there has been an error.', $domain),
 			'not_exist' => __('The file does not exist, please ', $domain),
@@ -458,7 +455,7 @@
 			'A new version of' => __('A new version of this importer is available. Please update to version %s to ensure compatibility with newer export files. ', $domain),
 			'select_xml' => __('Select (<b>.xml</b>) file to upload sample data.<br>If you do not want to install sample data from livedemo you need to <b>skip this step</b>.', $domain),
 			'sample_data_import_warning' => __('Please note that certain content is already installed. You may simply need to skip this step. Otherwise, you can proceed with the installation.', $domain),
-			
+
 			'server_settings_error' => __('Some of your server settings do not meet the requirements for installing the sample data. Please, consult with your hosting provider on how to increase the required values.', $domain),
 			'server_settings' => __('Server Settings', $domain),
 			'current' => __('Current', $domain),
@@ -476,8 +473,8 @@
 			'login_error' => __('The login information you have entered is incorrect.', $domain),
 			'warning_notice_1' => __('You need to enable write permissions on your server to use these functions.', $domain),
 			'warning_notice_2' => __('Cherry Framework is not able to perform necessary changes for the correct work with your child theme.', $domain),
-			'warning_notice_3' => __('See <a target="_blank" href="http://codex.wordpress.org/Changing_File_Permissions">the Codex</a> for more information.', $domain),
-			
+			'warning_notice_3' => __('See <a target="_blank" href="//codex.wordpress.org/Changing_File_Permissions">the Codex</a> for more information.', $domain),
+
 			//theme-init.php
 			'header_menu' => __('Header Menu', $domain),
 			'footer_menu' => __('Footer Menu', $domain),
@@ -488,7 +485,7 @@
 			'our_team' => __('Our Team', $domain),
 			'category' => __('Category', $domain),
 			'tag' => __('Tag', $domain),
-			
+
 			//theme-function.php
 			'thumbnail' => __('Thumbnail', $domain),
 			'your_comment' => __('Your comment is awaiting moderation.', $domain),
@@ -521,14 +518,14 @@
 			'audio_format_desc' => __('Choose audio format.', $domain),
 			'audio_url' => __('Audio URL', $domain),
 			'audio_url_desc' => __('Input the audio URL.', $domain),
-			
+
 			//theme-slidermeta.php
 			'slider_options' => __('Slider Options', $domain),
 			'caption' => __('Caption', $domain),
 			'caption_desc' => __('Input your caption for slide (HTML tags are allowed).', $domain),
 			'url_desc_slidermeta' => __('Input the slide URL (can be external link)', $domain),
 			'slider_options_desc' => __('Please fill additional fields for slide.', $domain),
-			
+
 			//theme-teammeta.php
 			'personal_options' => __('Personal Options', $domain),
 			'personal_options_desc' => __('Please fill additional fields for person.', $domain),
@@ -538,9 +535,11 @@
 			's_n' => __('Social Networks', $domain),
 			'page_url' => __('Page URL', $domain),
 			'your_s_n' => __('Your Social Networks.', $domain),
-			'icon_desc' => __('In icon field you need to specify the icon name that can be copied from the <a target="_blank" href="http://fortawesome.github.io/Font-Awesome/icons/#brand">website</a>. E.g. "icon-facebook".', $domain),
+			'icon_desc' => __('In icon field you need to specify the icon name that can be copied from the <a target="_blank" href="//fortawesome.github.io/Font-Awesome/3.2.1/icons/#brand">website</a>. E.g. "icon-facebook".', $domain),
 			'network_title' => __('Social Networks Title', $domain),
 			'network_title_desc' => __('Specify the heading for the social networks block.', $domain),
+			'team_email' => __('Email', $domain),
+			'team_email_desc' => __('Input email address.', $domain),
 
 			//theme-testimeta.php
 			'testimonial_options' => __('Testimonial Options', $domain),
@@ -549,7 +548,9 @@
 			'name_desc' => __('Input author\'s name.', $domain),
 			'url_desc_2' => __('Input author\'s URL.', $domain),
 			'info_desc_3' => __('Input author\'s additional info.', $domain),
-			
+			'testi_email' => __('Email', $domain),
+			'testi_email_desc' => __('Input author\'s email address.', $domain),
+
 			//theme-postmeta.php
 			'quote_settings' => __('Quote Settings', $domain),
 			'quote' => __('The Quote', $domain),
@@ -566,7 +567,7 @@
 			'category_include' => __('Category Include', $domain),
 			'category_slug' => __('The Category Slug', $domain),
 			'category_desc' => __('Name of the custom category that is displayed on this page. You need to use the slug of the category here.', $domain),
-			
+
 			//class-tgm-plugin-activation.php, register-plugins.php
 			'page_title' => __('Install Required Plugins', $domain),
 			'menu_title' => __('Install Plugins', $domain),
@@ -652,7 +653,7 @@
 			'footer_desc' => __('Located at the bottom of pages.', $domain),
 			'archives' => __('Archives', $domain),
 			'meta' => __('Meta', $domain),
-			
+
 			//post-meta.php
 			'no_comments' => __('No comments', $domain),
 			'comment' => __('1 comment', $domain),
@@ -666,7 +667,7 @@
 			'dislike' => __('I don\'t like.', $domain),
 			'not_voting' => __('Only registered users can vote!', $domain),
 			'have_voting' => __('You have already voted.', $domain),
-			
+
 			//post-nav.php
 			'older' => __('&laquo; Older Entries', $domain),
 			'newer' => __('Newer Entries &raquo;', $domain),
@@ -675,7 +676,7 @@
 			'shortcode_options' => __('Shortcode Options', $domain),
 			'cancel' => __('Cancel', $domain),
 			'insert_shortcode' => __('Insert Shortcode', $domain),
-			
+
 			//editor_plugin.php
 			'posts' => __('Posts', $domain),
 			'posts_grid' => __('Posts Grid', $domain),
@@ -738,7 +739,7 @@
 			'table' => __('Table', $domain),
 			'map' => __('Google Map', $domain),
 			'site_map' => __('Sitemap', $domain),
-			
+
 			//my-banners-widget.php
 			'add_125_125' => __('Add 125x125 ads.', $domain),
 			'add_125_125_desc' => __('Cherry - 125x125 Ads', $domain),
@@ -748,7 +749,7 @@
 			'ad_4' => __('Ad 4', $domain),
 			'image_ad_link' => __('Image Ad Link:', $domain),
 			'ad_link' => __('Ad Link:', $domain),
-			
+
 			//my-comment-widget.php
 			'recent_comments' => __('Cherry - Recent Comments', $domain),
 			'recent_comments_decs' => __('My Recent Comments', $domain),
@@ -763,12 +764,12 @@
 			'comment_date' => __('Date', $domain),
 			'comment_author' => __('Author', $domain),
 			'comment_in' => __('Comment in', $domain),
-			
+
 			//my-flickr-widget.php
 			'flickr' => __('Cherry - Flickr', $domain),
 			'flickr_id' => __('Flickr ID:', $domain),
 			'images_count' => __('Images count:', $domain),
-			
+
 			//my-posts-type-widget.php
 			'advanced_cycle' => __('Cherry - Advanced Cycle', $domain),
 			'advanced_cycle_desc' => __('Show custom posts', $domain),
@@ -797,7 +798,7 @@
 			'all_posts_link' => __('Link to all posts', $domain),
 			'show_global_link' => __('Show global link to all posts', $domain),
 			'default_view_all' => __('(default: "View all")', $domain),
-			
+
 			//my-recent-posts
 			'recent_posts' => __('Cherry - Recent Posts', $domain),
 			'permanent_link_to' => __('Permanent Link to', $domain),
@@ -805,7 +806,7 @@
 			'post_format' => __('Post format:', $domain),
 			'post_order' => __('Post order:', $domain),
 			'posts_per_page' => __('Posts per page:', $domain),
-			
+
 			//my-social-widget.php
 			'social_networks' => __('Cherry - Social Networks', $domain),
 			'social_networks_desc' => __('Link to your social networks.', $domain),
@@ -814,12 +815,12 @@
 			'icons' => __('Icons', $domain),
 			'labels' => __('Labels', $domain),
 			'both' => __('Both', $domain),
-			
+
 			//my-twitter-widget.php
 			'twitter' => __('Cherry - Twitter', $domain),
 			'twitter_name' => __('Twitter Name:', $domain),
 			'twitter_num' => __('Twitts Number:', $domain),
-			
+
 			//my-vcard-widget.php
 			'vCard_name' => __('Cherry - vCard', $domain),
 			'vCard_desc' => __('Use this widget to add a vCard', $domain),
@@ -839,7 +840,7 @@
 			'facebook_widget_name' => __('Cherry - Facebook Like Box Widget', $domain),
 			'facebook_widget_disc' => __('Cherry - Facebook Like Box Widget', $domain),
 			'facebook_url' => __('Facebook page url', $domain),
-			'facebook_desc' => __('The Like Box only works with <a target="_blank" href="https://www.facebook.com/help/174987089221178/" title="Facebook Pages">Facebook Pages.</a>', $domain),
+			'facebook_desc' => __('The Like Box only works with <a target="_blank" href="//www.facebook.com/help/174987089221178/" title="Facebook Pages">Facebook Pages.</a>', $domain),
 			'color_scheme' => __('Color Scheme', $domain),
 			'light' => __('Light', $domain),
 			'dark' => __('Dark', $domain),
@@ -889,11 +890,11 @@
 			'info_box_3' => __('You can back up your theme. If the theme has a backup copy, it is possible to restore it or download. The date of the latest backup copy is displayed in the column <b>Last Backup Date</b>.', $domain),
 			'info_box_4' => __('<b style="color:red;">Warning!</b> Before updating framework you are strongly advised to <a href="admin.php?page=options-framework-data-management">backup</a> your data.', $domain),
 
-			
+
 			//options-medialibrary-uploader.php
 			'view_file' => __('View File', $domain),
 			'previously_uploaded' => __('Previously Uploaded', $domain),
-			
+
 			//options-sanitize.php
 			'latin' => __('Latin', $domain),
 			'latin_extended' => __('Latin Extended', $domain),
@@ -906,13 +907,13 @@
 			'italic' => __('Italic', $domain),
 			'bold' => __('Bold', $domain),
 			'bold_italic' => __('Bold Italic', $domain),
-			
+
 			//parsers.php
 			'there_was' => __('There was an error when reading this WXR file', $domain),
 			'details_are' => __('Details are shown above. The importer will now try again with a different parser...', $domain),
 			'SimpleXML_parse_error' => __('There was an error when reading this WXR file', $domain),
 			'WXR_parse_error' => __('This does not appear to be a WXR file, missing/invalid WXR version number', $domain),
-			
+
 			//update.php
 			'themes_api_failed' => __("<p>An Unexpected HTTP Error occurred during the API request.</p><p><a href='#' onclick='document.location.reload(); return false;'>Try again</a></p>", $domain),
 			'themes_api_failed_2' => __('An unknown error occurred', $domain),
@@ -922,7 +923,7 @@
 			'or' => __('or', $domain),
 			'update_now' => __('update now.', $domain),
 			'dismiss_notice' => __('Dismiss this notice', $domain),
-			
+
 			//comments.php
 			'please_do_not' => __('Please do not load this page directly. Thanks!', $domain),
 			'password' => __('This post is password protected. Enter the password to view comments.', $domain),
@@ -942,17 +943,17 @@
 			'website_comment' => __('Website', $domain),
 			'your_comment' => __('Your comment*', $domain),
 			'submit_comment' => __('Submit Comment', $domain),
-			
+
 			//share-buttons.php
 			'tweet_this_article' => __('Tweet this article', $domain),
-			
+
 			//loop-archives.php
 			'continue_reading' => __('Continue Reading', $domain),
 			'pages' => __('Pages:', $domain),
 			'last_posts' => __('Last 30 Posts', $domain),
 			'archives_month' => __('Archives by Month:', $domain),
 			'archives_subject' => __('Archives by Subject:', $domain),
-			
+
 			//loop-author.php
 			'about' => __('About:', $domain),
 			'recent_posts_by' => __('Recent Posts by', $domain),
@@ -961,31 +962,31 @@
 			'no_comments_author' => __('%1$s on %2$s', $domain),
 			'no_comments_by' => __('No comments by', $domain),
 			'yet' => __('yet.', $domain),
-			
+
 			//loop-blog.php //loop-single-testi.php
 			'there_has' => __('There has been an error.', $domain),
 			'we_apologize' => __('We apologize for any inconvenience, please', $domain),
 			'return_to' => __('return to the home page', $domain),
 			'search_form' => __('or use the search form below.', $domain),
-			
+
 			//loop-faq.php
 			'q' => __('Q?', $domain),
 			'a' => __('A.', $domain),
-			
+
 			//loop-single.php
 			'written_by' => __('Written by', $domain),
 			'view_all' => __('View all posts by', $domain),
-			
+
 			//portfolio-loop.php
 			'not_found' => __('Not Found', $domain),
 			'apologies' => __('Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', $domain),
-			
+
 			//static-footer-text.php
 			'powered_by' => __('is proudly powered by', $domain),
 			'entries_rss' => __('Entries (RSS)', $domain),
 			'comments_rss' => __('Comments (RSS)', $domain),
 			'privacy_policy' => __('Privacy Policy', $domain),
-			
+
 			//title.php
 			'category_archives' => __('Category Archives', $domain),
 			'portfolio_category' => __('Portfolio Category', $domain),
@@ -996,22 +997,22 @@
 			'by' => __('by ', $domain),
 			'tag_archives' => __('Tag Archives', $domain),
 			'portfolio_tag' => __('Portfolio Tag', $domain),
-			
+
 			//header.php
 			'category_for' => __('Category Archive for', $domain),
 			'tag_for' => __('Tag Archive for', $domain),
 			'archive' => __('Archive', $domain),
 			'error_404' => __('Error 404 Not Found', $domain),
-			
+
 			//loop-single-portfolio.php
 			'launch_project' => __('Launch Project', $domain),
-			
+
 			//static-not-found.php
 			'sorry' => __('Sorry!', $domain),
 			'page_not_found' => __('Page Not Found', $domain),
 			'page_you_are_looking' => __('The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', $domain),
 			'please_try_using' => __('Please try using our search box below to look for information on the internet.', $domain),
-			
+
 			//posts_list.php
 			'posted_in' => __('Posted in', $domain),
 
@@ -1021,11 +1022,11 @@
 			//Child theme
 			//custom-function.php
 			'submit_permalink' => __('Submit Permalink Structure', $domain),
-			'submit_permalink_desc' => __("This way of links configuration can be used by not only our blog followers but will help in SEO-optimisation as well. The effectiveness and main features of this link configuration method are revealed <a href='http://codex.wordpress.org/Using_Permalinks'>here</a>", $domain),
+			'submit_permalink_desc' => __("This way of links configuration can be used by not only our blog followers but will help in SEO-optimisation as well. The effectiveness and main features of this link configuration method are revealed <a href='//codex.wordpress.org/Using_Permalinks'>here</a>", $domain),
 			'import_sample_data' => __('Import Sample Data', $domain),
 			'import_sample_data_desc' => __('If you want to install sample data from livedemo you need to go to <strong><a href="admin.php?page=import-page">Import Content</a></strong> and follow the tips.', $domain),
 			'import_sample_data_desc_2' => __('If you want to install sample data from livedemo you need to go to <strong><a href="admin.php?page=import-page">Import Content</a></strong> and follow the tips.', $domain),
-			
+
 			//options-interface.php
 			'no_lable' => __('No lable.', $domain),
 
@@ -1071,6 +1072,9 @@
 
 			//seo_settings_page.php
 			'sitemap_xml' => __('Sitemap XML', $domain),
+			'generate_sitemap_title' => __('Use sitemap.xml for your website', $domain),
+			'generate_sitemap' => __('Enable sitemap.xml (Disabling this option will delete sitemap.xml file)', $domain),
+			'generate_robots' => __('Generate robots.txt file to control search bots while indexing your website. (Disabling this option will delete robots.txt file)', $domain),
 			'include_post_types' => __('Include post types.', $domain),
 			'priority' => __('Priority.', $domain),
 			'change_freq' => __('Change freq.', $domain),

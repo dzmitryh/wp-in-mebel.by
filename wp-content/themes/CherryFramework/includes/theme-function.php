@@ -35,8 +35,8 @@ function gener_random($length){
 add_filter('the_content', 'shortcode_empty_paragraph_fix');
 function shortcode_empty_paragraph_fix($content) {
 	$array = array (
-			'<p>['    => '[', 
-			']</p>'   => ']', 
+			'<p>['    => '[',
+			']</p>'   => ']',
 			']<br />' => ']'
 	);
 	$content = strtr($content, $array);
@@ -81,44 +81,59 @@ add_filter( 'manage_pages_columns', 'fb_AddThumbColumn' );
 add_action( 'manage_pages_custom_column', 'fb_AddThumbValue', 10, 2 );
 }
 
-// Show filter by categories for custom posts
-function my_restrict_manage_posts() {
-	global $typenow;
-	$args=array( 'public' => true, '_builtin' => false ); 
-	$post_types = get_post_types($args);
-	if ( in_array($typenow, $post_types) ) {
-	$filters = get_object_taxonomies($typenow);
-		foreach ($filters as $tax_slug) {
-			$tax_obj = get_taxonomy($tax_slug);
+/**
+ * Add dropdowns for portfolio filters in admin
+ */
+function cherry_show_portfolio_filter() {
+	global $typenow, $wp_query;
+
+	if ($typenow=='portfolio') :
+		$portf_taxes = array( 'portfolio_category', 'portfolio_tag' );
+		foreach ($portf_taxes as $tax) {
+			$tax_obj = get_taxonomy($tax);
+
+			if ( isset($_GET[$tax]) ) {
+				$selected = $_GET[$tax];
+			} else {
+				$selected = '';
+			}
+
 			wp_dropdown_categories(array(
-				'show_option_all' => theme_locals("show_all").$tax_obj->label,
-				'taxonomy' => $tax_slug,
-				'name' => $tax_obj->name,
-				'orderby' => 'term_order',
-				// 'selected' => $_GET[$tax_obj->query_var],
-				'hierarchical' => $tax_obj->hierarchical,
-				'show_count' => false,
-				'hide_empty' => true
+				'show_option_all' => theme_locals("show_all") . $tax_obj->label,
+				'taxonomy'        => $tax,
+				'name'            => $tax_obj->name,
+				'orderby'         => 'term_order',
+				'selected'        => $selected,
+				'hierarchical'    => $tax_obj->hierarchical,
+				'show_count'      => false,
+				'hide_empty'      => true
 			));
 		}
-	}
+	endif;
 }
-function my_convert_restrict($query) {
-	global $pagenow;
-	global $typenow;
-	if ($pagenow=='edit.php') {
-		$filters = get_object_taxonomies($typenow);
-		foreach ($filters as $tax_slug) {
-			$var = &$query->query_vars[$tax_slug];
-			if ( isset($var) ) {
-				$term = get_term_by('id',$var,$tax_slug);
-				// $var = $term->slug;
-			}
+add_action('restrict_manage_posts', 'cherry_show_portfolio_filter');
+
+/**
+ * Filter portfolio by cats and tags
+ */
+function cherry_portfolio_filter_query( $query ) {
+	global $typenow, $wp_query;
+
+	if ( $typenow == 'portfolio' ) {
+		// By Categories
+		if ( isset($_GET['portfolio_category']) && ! empty( $_GET['portfolio_category'] ) && 0 != $_GET['portfolio_category'] ) {
+				$cat_term = get_term_by( 'id', $_GET['portfolio_category'], 'portfolio_category' );
+			$query->query_vars['portfolio_category'] = $cat_term->slug;
+		}
+
+		// By Tags
+		if ( isset($_GET['portfolio_tag']) && ! empty( $_GET['portfolio_tag'] ) && 0 != $_GET['portfolio_tag'] ) {
+				$tag_term = get_term_by( 'id', $_GET['portfolio_tag'], 'portfolio_tag' );
+			$query->query_vars['portfolio_tag'] = $tag_term->slug;
 		}
 	}
 }
-add_action('restrict_manage_posts', 'my_restrict_manage_posts' );
-add_filter('parse_query','my_convert_restrict');
+add_filter( 'parse_query', 'cherry_portfolio_filter_query' );
 
 // Add to admin_init function
 add_action('manage_portfolio_posts_custom_column' , 'custom_portfolio_columns', 10, 2);
@@ -159,28 +174,32 @@ function custom_portfolio_columns( $column, $post_id ) {
 /* Output image */
 /*-----------------------------------------------------------------------------------*/
 if ( !function_exists( 'tz_image' ) ) {
-	function tz_image($postid, $imagesize) {
-		if (has_post_thumbnail($postid) ):
-			$lightbox = get_post_meta(get_the_ID(), 'tz_image_lightbox', TRUE);
-			if($lightbox == 'yes')
+	function tz_image( $postid = null, $imagesize ) {
+
+		$post_id = ( null === $postid ) ? get_the_ID() : $postid;
+
+		if ( has_post_thumbnail( $postid ) ):
+
+			$lightbox = get_post_meta( $post_id, 'tz_image_lightbox', TRUE );
+
+			if ( $lightbox == 'yes' )
 				$lightbox = TRUE;
 			else
 				$lightbox = FALSE;
-			$src = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), array( '9999','9999' ), false, '' );
 
-			// get the featured image for the post
-			if( has_post_thumbnail($postid) ) {
-				$thumb   = get_post_thumbnail_id();
-				$img_url = wp_get_attachment_url( $thumb,'full'); //get img URL
-				$image   = aq_resize( $img_url, 700, 460, true ); //resize & crop img
+			$src     = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), array( '9999','9999' ), false, '' );
+			$thumb   = get_post_thumbnail_id();
+			$img_url = wp_get_attachment_url( $thumb, 'full' ); //get img URL
+			$image   = aq_resize( $img_url, 700, 460, true ); //resize & crop img
 
-				if ($lightbox) :
-					echo '<figure class="featured-thumbnail thumbnail large"><a class="image-wrap" rel="prettyPhoto" title="'. get_the_title() .'" href="'. $src[0] .'"><img src="'. $image .'" alt="'. get_the_title() .'" /><span class="zoom-icon"></span></a></figure><div class="clear"></div>';
-				else :
-					echo '<figure class="featured-thumbnail thumbnail large"><img src="'. $image .'" alt="'. get_the_title() .'" /></figure><div class="clear"></div>';
-				endif;
-			}
+			if ( $lightbox ) :
+				echo '<figure class="featured-thumbnail thumbnail large"><a class="image-wrap" rel="prettyPhoto" title="'. get_the_title() .'" href="'. $src[0] .'"><img src="'. $image .'" alt="'. get_the_title() .'" /><span class="zoom-icon"></span></a></figure><div class="clear"></div>';
+			else :
+				echo '<figure class="featured-thumbnail thumbnail large"><img src="'. $image .'" alt="'. get_the_title() .'" /></figure><div class="clear"></div>';
+			endif;
+
 		endif;
+
 	}
 }
 
@@ -189,11 +208,43 @@ if ( !function_exists( 'tz_image' ) ) {
 /* Output gallery */
 /*-----------------------------------------------------------------------------------*/
 if ( !function_exists( 'tz_grid_gallery' ) ) {
-	function tz_grid_gallery($postid, $imagesize) { ?>
-		<!--BEGIN .slider -->
+
+	function tz_grid_gallery($postid, $imagesize) {
+		$single_folio_layout = of_get_option('single_folio_layout');
+		$single_gallery_layout = of_get_option('single_gallery_layout');
+
+		if ( $single_gallery_layout == 'masonry' ) {
+
+			add_action( 'wp_footer', 'cherry_enqueue_isotope' );
+
+		} ?>
+
+		<script type="text/javascript">
+			jQuery(document).ready(function () {
+				var
+						masonrycontainer = jQuery('.grid_gallery_inner')
+					,	col = 3
+					,	layout = "<?php echo $single_gallery_layout ?>"
+					;
+				if( layout =='masonry'){
+					masonrycontainer.isotope({
+						itemSelector : '.gallery_item'
+					,	masonry: { columnWidth: Math.floor(masonrycontainer.width() / col) }
+					});
+
+					jQuery(window).resize(function(){
+						jQuery('.gallery_item', masonrycontainer).width(Math.floor(masonrycontainer.width() / col));
+						masonrycontainer.isotope({
+							masonry: { columnWidth: Math.floor(masonrycontainer.width() / col) }
+						});
+					}).trigger('resize');
+				}
+			});
+		</script>
 		<div class="grid_gallery clearfix">
 			<div class="grid_gallery_inner">
-			<?php 
+			<?php
+
 				$args = array(
 						'orderby'        => 'menu_order',
 						'order'          => 'ASC',
@@ -211,30 +262,63 @@ if ( !function_exists( 'tz_grid_gallery' ) ) {
 				else
 					$lightbox = FALSE;
 				$src = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), array( '9999','9999' ), false, '' );
-			
+
 			if ($attachments) :
 				foreach ($attachments as $attachment) :
 					$attachment_url = wp_get_attachment_image_src( $attachment->ID, 'full' );
-					$url            = $attachment_url['0'];
-					$image          = aq_resize($url, 260, 160, true);
+					$url			= $attachment_url['0'];
+					$imgWidth		= $attachment_url['1'];
+					$imgHeight		= $attachment_url['2'];
+
+					switch ($single_gallery_layout) {
+						case 'grid':
+							if($single_folio_layout=='grid'){
+								$new_width	= 260;
+								$new_height	= 160;
+							}else{
+								$new_width	= 390;
+								$new_height	= 260;
+							}
+							break;
+						case 'masonry':
+							if($single_folio_layout=='grid'){
+								$new_width	= 260;
+								$new_height	= $imgHeight / $imgWidth * $new_width;
+							}else{
+								$new_width	= 390;
+								$new_height	= $imgHeight / $imgWidth * $new_width;
+							}
+							break;
+					}
+					$image	= aq_resize($url, $new_width, $new_height, true);
 				?>
 				<figure class="gallery_item featured-thumbnail thumbnail single-gallery-item">
 					<?php if($lightbox) : ?>
 					<a href="<?php echo $attachment_url['0'] ?>" class="image-wrap" rel="prettyPhoto[gallery]">
-						<img alt="<?php echo apply_filters('the_title', $attachment->post_title); ?>" src="<?php echo $image ?>" width="260" height="160" />
+						<img alt="<?php echo apply_filters('the_title', $attachment->post_title); ?>" src="<?php echo $image ?>" width="<?php echo $new_width ?>" height="<?php echo $new_height ?>" />
 						<span class="zoom-icon"></span>
 						</a>
 					<?php else : ?>
-						<img alt="<?php echo apply_filters('the_title', $attachment->post_title); ?>" src="<?php echo $image ?>" width="260" height="160" />
+						<img alt="<?php echo apply_filters('the_title', $attachment->post_title); ?>" src="<?php echo $image ?>" width="<?php echo $new_width ?>" height="<?php echo $new_height ?>" />
 					<?php endif; ?>
 				</figure>
-			<?php 
-				endforeach;
-			endif; ?>
+			<?php endforeach;?>
+
+			<?php endif; ?>
+
 			</div>
 		<!--END .slider -->
 		</div>
 	<?php }
+}
+
+function cherry_enqueue_isotope() {
+
+	if ( !wp_script_is( 'isotope', 'enqueued' ) ) {
+
+		wp_enqueue_script( 'isotope', PARENT_URL . '/js/jquery.isotope.js', array( 'jquery' ), '1.5.25', true );
+
+	}
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -248,13 +332,16 @@ if ( !function_exists( 'tz_gallery' ) ) {
 					jQuery('#flexslider_<?php echo $random ?>').flexslider({
 						animation: "slide",
 						smoothHeight : true
+						<?php if ( is_rtl() ) { ?>
+							,rtl : true
+						<?php } ?>
 					});
 				});
 			</script>
 
 			<div id="flexslider_<?php echo $random ?>" class="flexslider thumbnail">
 				<ul class="slides">
-				<?php 
+				<?php
 					$args = array(
 						'orderby'        => 'menu_order',
 						'order'          => 'ASC',
@@ -272,14 +359,14 @@ if ( !function_exists( 'tz_gallery' ) ) {
 					else
 						$lightbox = FALSE;
 					$src = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), array( '9999','9999' ), false, '' );
-					
+
 					if ($attachments) :
 						foreach ($attachments as $attachment) :
 						$attachment_url = wp_get_attachment_image_src( $attachment->ID, 'full' );
 						$url            = $attachment_url['0'];
 						$image          = aq_resize($url, 650, 400, true);
 					?>
-					
+
 					<li>
 						<?php if($lightbox) : ?>
 							<a href="<?php echo $attachment_url['0'] ?>" class="image-wrap" rel="prettyPhoto[gallery]">
@@ -311,7 +398,7 @@ if ( !function_exists( 'tz_audio' ) ) {
 		// get content URL
 		$content_url = content_url();
 		$content_str = 'wp-content';
-		
+
 		$pos = strpos($audio_url, $content_str);
 		if ($pos === false) {
 			$file = $audio_url;
@@ -347,7 +434,7 @@ if ( !function_exists( 'tz_audio' ) ) {
 				});
 			});
 		</script>
-		
+
 		<div id="jquery_jplayer_<?php the_ID(); ?>" class="jp-jplayer"></div>
 		<div id="jp_container_<?php the_ID(); ?>" class="jp-audio">
 			<div class="jp-type-single">
@@ -389,7 +476,7 @@ if ( !function_exists( 'tz_audio' ) ) {
 				</ul>
 			</div>
 		</div>
-		<?php 
+		<?php
 	}
 }
 
@@ -408,7 +495,7 @@ if ( !function_exists( 'tz_video' ) ) {
 		// get content URL
 		$content_url = content_url();
 		$content_str = 'wp-content';
-		
+
 		$pos1     = strpos($m4v_url, $content_str);
 		if ($pos1 === false) {
 			$file1 = $m4v_url;
@@ -424,7 +511,7 @@ if ( !function_exists( 'tz_video' ) ) {
 			$ogv_new  = substr($ogv_url, $pos2+strlen($content_str), strlen($ogv_url) - $pos2);
 			$file2    = $content_url.$ogv_new;
 		}
-		
+
 		// get thumb (poster image)
 		$thumb        = get_post_thumbnail_id( $postid );
 		$img_url      = wp_get_attachment_url( $thumb,'full'); //get img URL
@@ -530,7 +617,7 @@ if ( !function_exists( 'pagination' ) ) {
 				}
 			}
 
-			if ( $paged < $pages && $showitems < $pages ) echo "<li class='next'><a href=\"".get_pagenum_link($paged + 1)."\">".theme_locals("next")."</a></li>"; 
+			if ( $paged < $pages && $showitems < $pages ) echo "<li class='next'><a href=\"".get_pagenum_link($paged + 1)."\">".theme_locals("next")."</a></li>";
 			if ( $paged < $pages-1 && $paged+$range-1 < $pages && $showitems < $pages ) echo "<li class='last'><a href='".get_pagenum_link($pages)."'>".theme_locals("last")."</a></li>";
 			echo "</ul></div>\n";
 		}
@@ -586,7 +673,7 @@ if ( !function_exists( 'breadcrumbs' ) ) {
 	$homeLink = home_url();
 
 	if (is_front_page()) {
-		if ($showOnHome == 1) 
+		if ($showOnHome == 1)
 			echo '<ul class="breadcrumb breadcrumb__t"><li><a href="' . $homeLink . '">' . $home . '</a><li></ul>';
 		} else {
 			echo '<ul class="breadcrumb breadcrumb__t"><li><a href="' . $homeLink . '">' . $home . '</a></li>' . $delimiter;
@@ -597,24 +684,24 @@ if ( !function_exists( 'breadcrumbs' ) ) {
 					echo theme_locals("blog");
 				}
 				echo $before . $blog_text . $after;
-			} 
+			}
 			elseif ( is_category() ) {
 				$thisCat = get_category(get_query_var('cat'), false);
 				if ($thisCat->parent != 0) echo get_category_parents($thisCat->parent, TRUE, ' ' . $delimiter . ' ');
 				echo $before . theme_locals("category_archives").': "' . single_cat_title('', false) . '"' . $after;
-			} 
+			}
 			elseif ( is_search() ) {
 				echo $before . theme_locals("fearch_for") . ': "' . get_search_query() . '"' . $after;
-			} 
+			}
 			elseif ( is_day() ) {
 				echo '<li><a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a></li> ' . $delimiter . ' ';
 				echo '<li><a href="' . get_month_link(get_the_time('Y'),get_the_time('m')) . '">' . get_the_time('F') . '</a></li> ' . $delimiter . ' ';
 				echo $before . get_the_time('d') . $after;
-			} 
+			}
 			elseif ( is_month() ) {
 				echo '<li><a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a></li> ' . $delimiter . ' ';
 				echo $before . get_the_time('F') . $after;
-			} 
+			}
 			elseif ( is_year() ) {
 				echo $before . get_the_time('Y') . $after;
 			}
@@ -644,11 +731,11 @@ if ( !function_exists( 'breadcrumbs' ) ) {
 					if (!empty($cat)) {
 						$cat  = $cat[0];
 						$cats = get_category_parents($cat, TRUE, '</li>' . $delimiter . '<li>');
-						if ($showCurrent == 0) 
+						if ($showCurrent == 0)
 							$cats = preg_replace("#^(.+)\s$delimiter\s$#", "$1", $cats);
 						echo '<li>' . substr($cats, 0, strlen($cats)-4);
 					}
-					if ($showCurrent == 1) 
+					if ($showCurrent == 1)
 						echo $before . get_the_title() . $after;
 				}
 			}
@@ -657,7 +744,7 @@ if ( !function_exists( 'breadcrumbs' ) ) {
 				if ( isset($post_type) ) {
 					echo $before . $post_type->labels->singular_name . $after;
 				}
-			} 
+			}
 			elseif ( is_attachment() ) {
 				$parent = get_post($post->post_parent);
 				$cat    = get_the_category($parent->ID);
@@ -666,13 +753,13 @@ if ( !function_exists( 'breadcrumbs' ) ) {
 					echo get_category_parents($cat, TRUE, ' ' . $delimiter . ' ');
 					echo '<li><a href="' . get_permalink($parent) . '">' . $parent->post_title . '</a></li>';
 				}
-				if ($showCurrent == 1) 
+				if ($showCurrent == 1)
 					echo $before . get_the_title() . $after;
-			} 
+			}
 			elseif ( is_page() && !$post->post_parent ) {
-				if ($showCurrent == 1) 
+				if ($showCurrent == 1)
 					echo $before . get_the_title() . $after;
-			} 
+			}
 			elseif ( is_page() && $post->post_parent ) {
 				$parent_id  = $post->post_parent;
 				$breadcrumbs = array();
@@ -686,17 +773,17 @@ if ( !function_exists( 'breadcrumbs' ) ) {
 					echo $breadcrumbs[$i];
 					if ($i != count($breadcrumbs)-1) echo ' ' . $delimiter . ' ';
 				}
-				if ($showCurrent == 1) 
+				if ($showCurrent == 1)
 					echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
-			} 
+			}
 			elseif ( is_tag() ) {
 				echo $before . theme_locals("tag_archives") . ': "' . single_tag_title('', false) . '"' . $after;
-			} 
+			}
 			elseif ( is_author() ) {
 				global $author;
 				$userdata = get_userdata($author);
 				echo $before . theme_locals("by") . ' ' . $userdata->display_name . $after;
-			} 
+			}
 			elseif ( is_404() ) {
 				echo $before . '404' . $after;
 			}

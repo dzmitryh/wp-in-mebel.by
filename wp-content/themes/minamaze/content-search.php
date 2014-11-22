@@ -20,7 +20,6 @@
 							</div>
 
 							<?php the_excerpt(); ?>
-							<?php thinkup_input_readmore(); ?>
 						</div>
 
 					</article><!-- #post-<?php get_the_ID(); ?> -->	

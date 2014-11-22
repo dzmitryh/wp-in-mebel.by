@@ -17,7 +17,7 @@
 	<?php if ( have_comments() ) : ?>
 		<h3 id="comments-title">
 			<?php
-				printf( _n( '1 comment %2$s', '%1$s comments %2$s', get_comments_number() ),
+				printf( _n( '1 comment %2$s', '%1$s comments %2$s', get_comments_number(), 'lan-thinkupthemes' ),
 					number_format_i18n( get_comments_number() ), '<span class="post-title">on &ldquo;' . get_the_title() . '&rdquo;</span>' );
 			?>
 		</h3>
@@ -47,7 +47,7 @@
 	?>
 
 		<div id="nocomments" class="notification info">
-			<div class="icon"><?php echo 'Comments are closed.'; ?></div>
+			<div class="icon"><?php _e( 'Comments are closed.', 'lan-thinkupthemes' ); ?></div>
 		</div>
 
 	<?php endif; ?>

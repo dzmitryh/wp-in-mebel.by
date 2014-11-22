@@ -124,17 +124,18 @@ function light_box_slider_short_code() {
      */
     $IG_CPT_Name = "lightbox-slider";
     $IG_Taxonomy_Name = "category";
-    $AllGalleries = array( 'post_type' => $IG_CPT_Name, 'orderby' => 'ASC');
+	$all_posts = wp_count_posts( 'lightbox-slider')->publish;
+    $AllGalleries = array( 'post_type' => $IG_CPT_Name, 'orderby' => 'ASC','posts_per_page' =>$all_posts);
     $loop = new WP_Query( $AllGalleries );
     ?>
     <div id="gallery1" class="gal-container">
 		<?php while ( $loop->have_posts() ) : $loop->the_post();?>
 			<!--get the post id-->
 			<?php $post_id = get_the_ID(); ?>
-			<div style="display: block; overflow:hidden; padding-bottom:20px;">
+			<div id="<?php echo get_the_title($post_id); ?>" style="display: block; overflow:hidden; padding-bottom:20px;">
 					<?php if($LBS_Gallery_Title==""){ $LBS_Gallery_Title == "yes"; } if($LBS_Gallery_Title == "yes") { ?>
 				<!-- lbs gallery title-->
-				<div style="font-weight: bolder; padding-bottom:20px; border-bottom:2px solid #cccccc; margin-bottom: 20px;">
+				<div style="font-weight: bolder;padding-bottom:20px;border-bottom:2px solid #f2f2f2;text-align:center ;margin-bottom: 20px;font-size:16px;">
 					<?php echo ucwords(get_the_title($post_id)); ?>
 				</div>
 				<?php } ?>
@@ -207,7 +208,7 @@ function light_box_slider_short_code() {
 				</div>
 			</div>
 		<?php endwhile; ?>
-   
+    </div>
     <?php wp_reset_query(); ?>
     <?php
 	return ob_get_clean();

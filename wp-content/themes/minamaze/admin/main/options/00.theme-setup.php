@@ -33,63 +33,6 @@ add_action( 'admin_body_class', 'thinkup_check_premium');
 
 
 /* ----------------------------------------------------------------------------------
-	ADD THEME PLUGINS - CREDIT ATTRIBUTABLE TO http://tgmpluginactivation.com/
----------------------------------------------------------------------------------- */
-
-require_once( get_template_directory() . '/lib/plugins/theme-plugin-activation.php');
-add_action( 'tgmpa_register', 'thinkup_theme_register_required_plugins' );
-
-function thinkup_theme_register_required_plugins() {
- 
-    $plugins = array(
-	array(
-		'name' 		=> 'Contact Form 7',
-		'slug' 		=> 'contact-form-7',
-		'required' 	=> false,
-	),
-	array(
-		'name' 		=> 'Google Maps',
-		'slug' 		=> 'comprehensive-google-map-plugin',
-		'required' 	=> false,
-	),
-    );
-
-    // Change this to your theme text domain, used for internationalising strings
-    $theme_text_domain = 'lan-thinkupthemes';
-    $config = array(
-        'domain'            => 'lan-thinkupthemes',           // Text domain - likely want to be the same as your theme.
-        'default_path'      =>  '',                           // Default absolute path to pre-packaged plugins
-        'parent_menu_slug'  => 'themes.php',         // Default parent menu slug
-        'parent_url_slug'   => 'themes.php',         // Default parent URL slug
-        'menu'              => 'install-required-plugins',   // Menu slug
-        'has_notices'       => true,                         // Show admin notices or not
-        'is_automatic'      => false,            // Automatically activate plugins after installation or not
-        'message'           => '',               // Message to output right before the plugins table
-        'strings'           => array(
-            'page_title'                                => __( 'Install Required Plugins', 'lan-thinkupthemes' ),
-            'menu_title'                                => __( 'Install Plugins', 'lan-thinkupthemes' ),
-            'installing'                                => __( 'Installing Plugin: %s', 'lan-thinkupthemes' ), // %1$s = plugin name
-            'oops'                                      => __( 'Something went wrong with the plugin API.', 'lan-thinkupthemes' ),
-            'notice_can_install_required'               => _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.' ), // %1$s = plugin name(s)
-            'notice_can_install_recommended'            => _n_noop( 'This theme recommends the following plugin: %1$s.', 'This theme recommends the following plugins: %1$s.' ), // %1$s = plugin name(s)
-            'notice_cannot_install'                     => _n_noop( 'Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed.', 'Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed.' ), // %1$s = plugin name(s)
-            'notice_can_activate_required'              => _n_noop( 'The following required plugin is currently inactive: %1$s.', 'The following required plugins are currently inactive: %1$s.' ), // %1$s = plugin name(s)
-            'notice_can_activate_recommended'           => _n_noop( 'The following recommended plugin is currently inactive: %1$s.', 'The following recommended plugins are currently inactive: %1$s.' ), // %1$s = plugin name(s)
-            'notice_cannot_activate'                    => _n_noop( 'Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated.', 'Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated.' ), // %1$s = plugin name(s)
-            'notice_ask_to_update'                      => _n_noop( 'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.', 'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.' ), // %1$s = plugin name(s)
-            'notice_cannot_update'                      => _n_noop( 'Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated.', 'Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated.' ), // %1$s = plugin name(s)
-            'install_link'                              => _n_noop( 'Begin installing plugin', 'Begin installing plugins' ),
-            'activate_link'                             => _n_noop( 'Activate installed plugin', 'Activate installed plugins' ),
-            'return'                                    => __( 'Return to Required Plugins Installer', 'lan-thinkupthemes' ),
-            'plugin_activated'                          => __( 'Plugin activated successfully.', 'lan-thinkupthemes' ),
-            'complete'                                  => __( 'Plugin(s) installed and activated successfully. %s', 'lan-thinkupthemes' ) // %1$s = dashboard link
-        )
-    );
-    tgmpa( $plugins, $config );
-}
-
-
-/* ----------------------------------------------------------------------------------
 	CORRECT Z-INDEX OF OEMBED OBJECTS
 ---------------------------------------------------------------------------------- */
 function thinkup_fix_oembed( $embed ) {
@@ -111,14 +54,14 @@ add_filter( 'embed_oembed_html', 'thinkup_fix_oembed', 1 );
 	ADD BREADCRUMBS FUNCTIONALITY
 ---------------------------------------------------------------------------------- */
 
-function wp_bac_breadcrumb() {
+function thinkup_input_breadcrumb() {
 global $thinkup_general_breadcrumbdelimeter;
 
 	if ( empty( $thinkup_general_breadcrumbdelimeter ) ) {
 		$delimiter = '<span class="delimiter">/</span>';
 	}
 	else if ( ! empty( $thinkup_general_breadcrumbdelimeter ) ) {
-		$delimiter = '<span class="delimiter"> ' . $thinkup_general_breadcrumbdelimeter . ' </span>';
+		$delimiter = '<span class="delimiter"> ' . esc_html( $thinkup_general_breadcrumbdelimeter ) . ' </span>';
 	}
 
 	$delimiter_inner   =   '<span class="delimiter_core"> &bull; </span>';
@@ -248,11 +191,11 @@ remove_action( 'wp_head', 'wp_generator');
 	REMOVE NON VALID REL CATEGORY TAGS
 ---------------------------------------------------------------------------------- */
 
-function add_nofollow_cat( $text ) { 
+function thinkup_add_nofollow_cat( $text ) { 
 	$text = str_replace( 'rel="category"', "", $text );
 	return $text; 
 };
-add_filter( 'the_category', 'add_nofollow_cat' );  
+add_filter( 'the_category', 'thinkup_add_nofollow_cat' );  
 
 
 /* ----------------------------------------------------------------------------------
@@ -370,18 +313,18 @@ add_filter('image_size_names_choose', 'thinkup_input_showimagesizes');
 	ADD HOME: HOME TO CUSTOM MENU PAGE LIST
 ---------------------------------------------------------------------------------- */
 
-function home_page_menu_args( $args ) {
+function thinkup_menu_homelink( $args ) {
 	$args['show_home'] = true;
 	return $args;
 }
-add_filter( 'wp_page_menu_args', 'home_page_menu_args' );
+add_filter( 'wp_page_menu_args', 'thinkup_menu_homelink' );
 
 
 //----------------------------------------------------------------------------------
 //	ADD FUNCTION TO GET CURRENT PAGE URL
 //----------------------------------------------------------------------------------
 
-function is_thinkuphome() {
+function thinkup_check_ishome() {
 	$pageURL = 'http';
 	if( isset($_SERVER["HTTPS"]) ) {
 		if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
@@ -406,11 +349,11 @@ function is_thinkuphome() {
 
 
 //----------------------------------------------------------------------------------
-//	ADD CUSTOM 'get_comments_popup_link' FUNCTION - Credit to http://www.thescubageek.com/code/wordpress-code/add-get_comments_popup_link-to-wordpress/
+//	ADD CUSTOM 'thinkup_get_comments_popup_link' FUNCTION - Credit to http://www.thescubageek.com/code/wordpress-code/add-get_comments_popup_link-to-wordpress/
 //----------------------------------------------------------------------------------
 
 // Modifies WordPress's built-in comments_popup_link() function to return a string instead of echo comment results
-function get_comments_popup_link( $zero = false, $one = false, $more = false, $css_class = '', $none = false ) {
+function thinkup_get_comments_popup_link( $zero = false, $one = false, $more = false, $css_class = '', $none = false ) {
     global $wpcommentspopupfile, $wpcommentsjavascript;
  
     $id = get_the_ID();
@@ -458,14 +401,14 @@ function get_comments_popup_link( $zero = false, $one = false, $more = false, $c
     $str .= apply_filters( 'comments_popup_link_attributes', '' );
  
     $str .= ' title="' . esc_attr( sprintf( __('Comment on %s','lan-thinkupthemes'), $title ) ) . '">';
-    $str .= get_comments_number_str( $zero, $one, $more );
+    $str .= thinkup_get_comments_number_str( $zero, $one, $more );
     $str .= '</a>';
      
     return $str;
 }
  
 // Modifies WordPress's built-in comments_number() function to return string instead of echo
-function get_comments_number_str( $zero = false, $one = false, $more = false, $deprecated = '' ) {
+function thinkup_get_comments_number_str( $zero = false, $one = false, $more = false, $deprecated = '' ) {
     if ( !empty( $deprecated ) )
         _deprecated_argument( __FUNCTION__, '1.3' );
  
@@ -486,14 +429,14 @@ function get_comments_number_str( $zero = false, $one = false, $more = false, $d
 //	CHANGE FALLBACK WP_PAGE_MENU CLASSES TO MATCH WP_NAV_MENU CLASSES
 //----------------------------------------------------------------------------------
 
-function add_menuclass( $ulclass ) {
+function thinkup_add_menuclass( $ulclass ) {
 
 	$ulclass = preg_replace( '/<ul>/', '<ul class="menu">', $ulclass, 1 );
 	$ulclass = str_replace( 'children', 'sub-menu', $ulclass );
 
 	return preg_replace('/<div (.*)>(.*)<\/div>/iU', '$2', $ulclass );
 }
-add_filter( 'wp_page_menu', 'add_menuclass' );
+add_filter( 'wp_page_menu', 'thinkup_add_menuclass' );
 
 
 //----------------------------------------------------------------------------------
@@ -501,7 +444,7 @@ add_filter( 'wp_page_menu', 'add_menuclass' );
 //----------------------------------------------------------------------------------
 
 // Credit to: http://www.poseidonwebstudios.com/web-development/wordpress-is_blog-function/
-function is_blog() {
+function thinkup_is_blog() {
  
     global $post;
  
@@ -519,47 +462,19 @@ function is_blog() {
 
 
 //----------------------------------------------------------------------------------
-//	ADD TAGS AND CATEGORIES TO PAGES.
-//----------------------------------------------------------------------------------
-
-// Register taxonomies for pages
-function taxonomies_for_pages() {
-	register_taxonomy_for_object_type( 'post_tag', 'page' );
-	register_taxonomy_for_object_type( 'category', 'page' );
-}
-if ( ! is_admin() ) {
-	add_action( 'pre_get_posts', 'category_archives' );
-	add_action( 'pre_get_posts', 'tags_archives' );
-}
-
-// Add categories to pages
-function category_archives( $wp_query ) {
-	if ( $wp_query->get( 'category_name' ) || $wp_query->get( 'cat' ) )
-	$wp_query->set( 'post_type', 'any' );
-}
-
-// Add tags to pages
-function tags_archives( $wp_query ) {
-	if ( $wp_query->get( 'tag' ) )
-		$wp_query->set( 'post_type', 'any' );
-}
-add_action( 'init', 'taxonomies_for_pages' );
-
-
-//----------------------------------------------------------------------------------
 //	ADD FEATURED IMAGE THUMBNAIL.
 //----------------------------------------------------------------------------------
 
 // Add featured images to posts
-add_filter('manage_pages_columns', 'posts_columns', 5);
-add_filter('manage_posts_columns', 'posts_columns', 5);
-add_action('manage_posts_custom_column', 'posts_custom_columns', 5, 2);
-add_action('manage_pages_custom_column', 'posts_custom_columns', 5, 2);
-function posts_columns($defaults){
+add_filter('manage_pages_columns', 'thinkup_posts_columns', 5);
+add_filter('manage_posts_columns', 'thinkup_posts_columns', 5);
+add_action('manage_posts_custom_column', 'thinkup_posts_custom_columns', 5, 2);
+add_action('manage_pages_custom_column', 'thinkup_posts_custom_columns', 5, 2);
+function thinkup_posts_columns($defaults){
     $defaults['riv_post_thumbs'] = __( 'Thumbs', 'lan-thinkupthemes' );
     return $defaults;
 }
-function posts_custom_columns($column_name, $id){
+function thinkup_posts_custom_columns($column_name, $id){
         if($column_name === 'riv_post_thumbs'){
         echo the_post_thumbnail( 'thumbnail' );
     }
@@ -587,6 +502,51 @@ function thinkup_input_excerptbyid($post_id){
 	$the_excerpt = '<p>' . $the_excerpt . '</p>';
 	return $the_excerpt;
 }
+
+
+//----------------------------------------------------------------------------------
+//	CUSTOM READ MORE FOR the_content() AND the_excerpt().
+//----------------------------------------------------------------------------------
+
+function thinkup_modify_read_more_link() {
+	return '<p><a href="'. get_permalink( get_the_ID() ) . '" class="more-link themebutton">' . __( 'Read More', 'lan-thinkupthemes') . '</a></p>';
+}
+add_filter( 'excerpt_more', 'thinkup_modify_read_more_link' );
+add_filter( 'the_content_more_link', 'thinkup_modify_read_more_link' );
+
+
+//----------------------------------------------------------------------------------
+//	ADD GOOGLE FONT - OPEN SANS.
+//----------------------------------------------------------------------------------
+
+function thinkup_googlefonts_url() {
+    $fonts_url = '';
+
+    // Translators: Translate thsi to 'off' if there are characters in your language that are not supported by Open Sans
+    $open_sans = _x( 'on', 'Open Sans font: on or off', 'lan-thinkupthemes' );
+ 
+    if ( 'off' !== $open_sans ) {
+        $font_families = array();
+  
+        if ( 'off' !== $open_sans ) {
+            $font_families[] = 'Open Sans:300,400,600,700';
+        }
+ 
+        $query_args = array(
+            'family' => urlencode( implode( '|', $font_families ) ),
+            'subset' => urlencode( 'latin,latin-ext' ),
+        );
+ 
+        $fonts_url = add_query_arg( $query_args, '//fonts.googleapis.com/css' );
+    }
+ 
+    return $fonts_url;
+}
+
+function thinkup_googlefonts_scripts() {
+   wp_enqueue_style( 'thinkup-google-fonts', thinkup_googlefonts_url(), array(), null );
+}
+add_action( 'wp_enqueue_scripts', 'thinkup_googlefonts_scripts' );
 
 
 ?>

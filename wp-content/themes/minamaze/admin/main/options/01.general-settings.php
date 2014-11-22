@@ -23,10 +23,10 @@ global $thinkup_general_sitedescription;
 		if ( empty( $thinkup_general_sitetitle ) ) {
 			echo '<h1 rel="home" class="site-title" title="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '">' . get_bloginfo( 'name' ) . '</h1>';
 		} else {
-			echo '<h1 rel="home" class="site-title" title="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '">' . $thinkup_general_sitetitle . '</h1>';
+			echo '<h1 rel="home" class="site-title" title="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '">' . esc_html( $thinkup_general_sitetitle ) . '</h1>';
 		}
 		if ( ! empty( $thinkup_general_sitedescription ) ) {
-			echo '<h2 class="site-description">' . $thinkup_general_sitedescription . '</h2>';
+			echo '<h2 class="site-description">' . esc_html( $thinkup_general_sitedescription ) . '</h2>';
 		}
 	}
 }
@@ -97,7 +97,7 @@ $_thinkup_meta_layout = get_post_meta( $post->ID, '_thinkup_meta_layout', true )
 		} else if ( $_thinkup_meta_layout == 'option4' ) {
 			wp_enqueue_style ( 'sidebarright' );
 		}
-	} else if ( is_blog() and ! is_single() ) {
+	} else if ( thinkup_is_blog() and ! is_single() ) {
 		if ( $thinkup_blog_layout == "option1" or empty( $thinkup_blog_layout ) ) {		
 			echo '';
 		} else if ( $thinkup_blog_layout == "option2" ) {
@@ -203,7 +203,7 @@ do_action('thinkup_sidebar_html');
 		} else if ( $_thinkup_meta_layout == 'option4' ) {
 			echo get_sidebar(); 
 		}
-	} else if ( is_blog() and ! is_single() ) {
+	} else if ( thinkup_is_blog() and ! is_single() ) {
 		if ( $thinkup_blog_layout == "option1" or empty( $thinkup_blog_layout ) ) {		
 			echo '';
 		} else if ( $thinkup_blog_layout == "option2" ) {
@@ -270,7 +270,7 @@ $_thinkup_meta_sidebars = get_post_meta( $post->ID, '_thinkup_meta_sidebars', tr
 		} else {
 			$output = $_thinkup_meta_sidebars;
 		}	
-	} else if ( is_blog() and ! is_single() ) {
+	} else if ( thinkup_is_blog() and ! is_single() ) {
 		$output = $thinkup_blog_sidebars;
 	} else if ( is_search() ) {	
 		$output = $thinkup_general_sidebars;
@@ -290,6 +290,7 @@ return $output;
 
 /* Select Page Title */
 function thinkup_title_select() {
+	global $post;
 
 	if ( is_page() ) {
 		printf( __( '%s', 'lan-thinkupthemes' ), get_the_title() );
@@ -315,7 +316,7 @@ function thinkup_title_select() {
 		printf( __( 'Monthly Archives: %s', 'lan-thinkupthemes' ), get_the_date( 'F Y' ) );
 	} elseif ( is_year() ) {
 		printf( __( 'Yearly Archives: %s', 'lan-thinkupthemes' ), get_the_date( 'Y' ) );
-	} elseif ( is_blog() ) {
+	} elseif ( thinkup_is_blog() ) {
 		printf( __( 'Blog', 'lan-thinkupthemes' ) );
 	} else {
 		printf( __( '%s', 'lan-thinkupthemes' ), get_the_title() );
@@ -343,7 +344,7 @@ function thinkup_custom_intro() {
 ---------------------------------------------------------------------------------- */
 
 /* http://wordpress.stackexchange.com/questions/40753/add-parent-class-to-parent-menu-items */
-class Walker_Nav_Menu_Responsive extends Walker_Nav_Menu{
+class thinkup_Walker_Nav_Menu_Responsive extends Walker_Nav_Menu{
 
     public function start_el(&$output, $item, $depth = 0, $args=array(), $id = 0){
 
@@ -375,7 +376,7 @@ global $thinkup_general_responsiveswitch;
 			'container_id'    => 'header-responsive-inner', 
 			'menu_class'      => '', 
 			'theme_location'  => 'header_menu', 
-			'walker'          => new Walker_Nav_Menu_Responsive(), 
+			'walker'          => new thinkup_Walker_Nav_Menu_Responsive(), 
 			'fallback_cb'     => 'thinkup_input_responsivefall',
 		);
 
@@ -434,10 +435,10 @@ $_thinkup_meta_breadcrumbs = get_post_meta( $post->ID, '_thinkup_meta_breadcrumb
 			if ( $thinkup_general_breadcrumbswitch == '0' or empty( $thinkup_general_breadcrumbswitch ) ) {
 				echo '';
 			} else if ( $thinkup_general_breadcrumbswitch == '1' ) {
-				wp_bac_breadcrumb();
+				thinkup_input_breadcrumb();
 			}
 		} else if ( $_thinkup_meta_breadcrumbs == 'option2' ) {
-			wp_bac_breadcrumb();
+			thinkup_input_breadcrumb();
 		}
 	}
 }
@@ -467,7 +468,7 @@ $_thinkup_meta_customcss = get_post_meta( $post->ID, '_thinkup_meta_customcss', 
 
 	if ( ! empty( $thinkup_general_customcss ) ) {
 		echo 	"\n" .'<style type="text/css">' . "\n",
-				$thinkup_general_customcss . "\n",
+				esc_html( $thinkup_general_customcss ) . "\n",
 				'</style>' . "\n";
 	}
 	if ( ! is_front_page() and ! empty( $_thinkup_meta_customcss ) ) {
@@ -492,7 +493,7 @@ $_thinkup_meta_customjava = get_post_meta( $post->ID, '_thinkup_meta_customjava'
 
 	if ( ! empty( $thinkup_general_customjavafront ) ) {
 	echo 	'<script type="text/javascript">',
-			"\n" . $thinkup_general_customjavafront . "\n",
+			"\n" . esc_js( $thinkup_general_customjavafront ) . "\n",
 			'</script>' . "\n";
 	}
 	if ( ! empty( $_thinkup_meta_customjava ) ) {

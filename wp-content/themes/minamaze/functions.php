@@ -24,21 +24,14 @@ if ( ! isset( $content_width ) )
 	require_once( get_template_directory() . '/admin/main/options/03.header.php' ); 
 	require_once( get_template_directory() . '/admin/main/options/04.footer.php' );
 	require_once( get_template_directory() . '/admin/main/options/05.blog.php' ); 
-	require_once( get_template_directory() . '/admin/main/options/06.portfolio.php' ); 
-	require_once( get_template_directory() . '/admin/main/options/07.contact-page.php' ); 
 	require_once( get_template_directory() . '/admin/main/options/08.special-pages.php' ); 
-	require_once( get_template_directory() . '/admin/main/options/09.notification-bar.php' ); 
-	require_once( get_template_directory() . '/admin/main/options/10.seo.php' ); 
-	require_once( get_template_directory() . '/admin/main/options/11.typography.php' ); 
-	require_once( get_template_directory() . '/admin/main/options/12.custom-styling.php' );
 
 	// Add widget features.
-	include_once( get_template_directory() . '/lib/widgets/categories.php' ); 
-	include_once( get_template_directory() . '/lib/widgets/popularposts.php' ); 
-	include_once( get_template_directory() . '/lib/widgets/recentcomments.php' ); 
-	include_once( get_template_directory() . '/lib/widgets/recentposts.php' ); 
-	include_once( get_template_directory() . '/lib/widgets/searchfield.php' ); 
-	include_once( get_template_directory() . '/lib/widgets/tagscloud.php' );
+//	include_once( get_template_directory() . '/lib/widgets/categories.php' ); 
+//	include_once( get_template_directory() . '/lib/widgets/popularposts.php' ); 
+//	include_once( get_template_directory() . '/lib/widgets/recentposts.php' ); 
+//	include_once( get_template_directory() . '/lib/widgets/searchfield.php' ); 
+//	include_once( get_template_directory() . '/lib/widgets/tagscloud.php' );
 
 /* ----------------------------------------------------------------------------------
 	Assign Theme Specific Functions
@@ -84,7 +77,7 @@ function thinkup_frontscripts() {
 	wp_enqueue_script('jquery');
 
 	/* Register theme stylesheets. */
-	wp_register_style( 'style', get_stylesheet_uri(), '', '1.0.1' );
+	wp_register_style( 'style', get_stylesheet_uri(), '', '1.1.1' );
 	wp_register_style( 'shortcodes', get_template_directory_uri() . '/styles/style-shortcodes.css', '', '1.1' );
 	wp_register_style( 'responsive', get_template_directory_uri() . '/styles/style-responsive.css', '', '1.1' );
 	wp_register_style( 'sidebarleft', get_template_directory_uri() . '/styles/layouts/thinkup-left-sidebar.css', '', '1.1' );
@@ -94,7 +87,7 @@ function thinkup_frontscripts() {
 
 	/* Register Font Packages. */
 	wp_register_style( 'font-awesome-min', get_template_directory_uri() . '/lib/extentions/font-awesome/css/font-awesome.min.css', '', '3.2.1' );
-	wp_register_style( 'font-awesome-cdn', '//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', '', '4.1.0' );
+	wp_register_style( 'font-awesome-cdn', get_template_directory_uri() . '/lib/extentions/font-awesome-4.2.0/css/font-awesome.min.css', '', '4.2.0' );
 	wp_register_style( 'dashicons-css', get_template_directory_uri() . '/lib/extentions/dashicons/css/dashicons.css', '', '2.0' );
 	
 	/* Register theme scripts. */
@@ -103,9 +96,6 @@ function thinkup_frontscripts() {
 	wp_register_script( 'retina', get_template_directory_uri() . '/lib/scripts/retina.js', array( 'jquery' ), '', true );
 	wp_register_script( 'bootstrap', get_template_directory_uri() . '/lib/extentions/bootstrap/js/bootstrap.js', array( 'jquery' ), '2.3.2', true );
 	wp_register_script( 'prettyPhoto', ( get_template_directory_uri()."/lib/extentions/prettyPhoto/jquery.prettyPhoto.js" ), array( 'jquery' ), '3.1.5', true );
-
-	/* Register Blog scripts. */
-	wp_register_script( 'masonry', get_template_directory_uri() . '/lib/scripts/plugins/masonry/masonry.js', array( 'jquery' ), '3.1.2', true );
 
 		/* Add Font Packages */
 		wp_enqueue_style( 'font-awesome-min' );
@@ -129,7 +119,7 @@ function thinkup_frontscripts() {
 		}
 
 		// Add ThinkUpSlider scripts
-		if ( is_front_page() or is_thinkuphome() ) {
+		if ( is_front_page() or thinkup_check_ishome() ) {
 			wp_enqueue_script( 'thinkupslider', get_template_directory_uri() . '/lib/scripts/plugins/ResponsiveSlides/responsiveslides.min.js', array( 'jquery' ), '1.54' );
 		wp_enqueue_script( 'thinkupslider-call', get_template_directory_uri() . '/lib/scripts/plugins/ResponsiveSlides/responsiveslides-call.js', array( 'jquery' ) );
 		}

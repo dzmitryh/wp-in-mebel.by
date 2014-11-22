@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Minamaze v1.0.0\n"
+"Project-Id-Version: Minamaze v1.0.6\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-06-03 20:44:38+0000\n"
+"PO-Revision-Date: 2014-10-06 22:15:41+0000\n"
 "Last-Translator: localadmin <afzaal@thinkupthemes.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -453,31 +453,31 @@ msgstr ""
 msgid "You must provide a valid URL for this option."
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:69
+#: admin/main/options/00.theme-setup.php:59
 #: lib/plugins/theme-plugin-activation.php:164
 #@ lan-thinkupthemes
 msgid "Install Required Plugins"
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:70
+#: admin/main/options/00.theme-setup.php:60
 #: lib/plugins/theme-plugin-activation.php:165
 #@ lan-thinkupthemes
 msgid "Install Plugins"
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:71
+#: admin/main/options/00.theme-setup.php:61
 #: lib/plugins/theme-plugin-activation.php:166
 #, php-format
 #@ lan-thinkupthemes
 msgid "Installing Plugin: %s"
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:72
+#: admin/main/options/00.theme-setup.php:62
 #@ lan-thinkupthemes
 msgid "Something went wrong with the plugin API."
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:73
+#: admin/main/options/00.theme-setup.php:63
 #: lib/plugins/theme-plugin-activation.php:168
 #, php-format
 #@ lan-thinkupthemes
@@ -486,7 +486,7 @@ msgid_plural "This theme requires the following plugins: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/main/options/00.theme-setup.php:74
+#: admin/main/options/00.theme-setup.php:64
 #: lib/plugins/theme-plugin-activation.php:169
 #, php-format
 #@ lan-thinkupthemes
@@ -495,7 +495,7 @@ msgid_plural "This theme recommends the following plugins: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/main/options/00.theme-setup.php:75
+#: admin/main/options/00.theme-setup.php:65
 #: lib/plugins/theme-plugin-activation.php:170
 #, php-format
 #@ lan-thinkupthemes
@@ -504,7 +504,7 @@ msgid_plural "Sorry, but you do not have the correct permissions to install the 
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/main/options/00.theme-setup.php:76
+#: admin/main/options/00.theme-setup.php:66
 #: lib/plugins/theme-plugin-activation.php:171
 #, php-format
 #@ lan-thinkupthemes
@@ -513,7 +513,7 @@ msgid_plural "The following required plugins are currently inactive: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/main/options/00.theme-setup.php:77
+#: admin/main/options/00.theme-setup.php:67
 #: lib/plugins/theme-plugin-activation.php:172
 #, php-format
 #@ lan-thinkupthemes
@@ -522,7 +522,7 @@ msgid_plural "The following recommended plugins are currently inactive: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/main/options/00.theme-setup.php:78
+#: admin/main/options/00.theme-setup.php:68
 #: lib/plugins/theme-plugin-activation.php:173
 #, php-format
 #@ lan-thinkupthemes
@@ -531,7 +531,7 @@ msgid_plural "Sorry, but you do not have the correct permissions to activate the
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/main/options/00.theme-setup.php:79
+#: admin/main/options/00.theme-setup.php:69
 #: lib/plugins/theme-plugin-activation.php:174
 #, php-format
 #@ lan-thinkupthemes
@@ -540,7 +540,7 @@ msgid_plural "The following plugins need to be updated to their latest version t
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/main/options/00.theme-setup.php:80
+#: admin/main/options/00.theme-setup.php:70
 #: lib/plugins/theme-plugin-activation.php:175
 #, php-format
 #@ lan-thinkupthemes
@@ -549,7 +549,7 @@ msgid_plural "Sorry, but you do not have the correct permissions to update the %
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/main/options/00.theme-setup.php:81
+#: admin/main/options/00.theme-setup.php:71
 #: lib/plugins/theme-plugin-activation.php:176
 #@ lan-thinkupthemes
 msgid "Begin installing plugin"
@@ -557,7 +557,7 @@ msgid_plural "Begin installing plugins"
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/main/options/00.theme-setup.php:82
+#: admin/main/options/00.theme-setup.php:72
 #: lib/plugins/theme-plugin-activation.php:177
 #@ lan-thinkupthemes
 msgid "Activate installed plugin"
@@ -565,165 +565,165 @@ msgid_plural "Activate installed plugins"
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/main/options/00.theme-setup.php:83
+#: admin/main/options/00.theme-setup.php:73
 #: lib/plugins/theme-plugin-activation.php:178
 #: lib/plugins/theme-plugin-activation.php:489
 #@ lan-thinkupthemes
 msgid "Return to Required Plugins Installer"
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:84
+#: admin/main/options/00.theme-setup.php:74
 #: lib/plugins/theme-plugin-activation.php:179
 #: lib/plugins/theme-plugin-activation.php:1845
 #@ lan-thinkupthemes
 msgid "Plugin activated successfully."
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:85
+#: admin/main/options/00.theme-setup.php:75
 #, php-format
 #@ lan-thinkupthemes
 msgid "Plugin(s) installed and activated successfully. %s"
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:160
+#: admin/main/options/00.theme-setup.php:150
 #@ lan-thinkupthemes
 msgid "Archive Category: "
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:162
+#: admin/main/options/00.theme-setup.php:152
 #@ lan-thinkupthemes
 msgid "Posts Tagged: "
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:171
+#: admin/main/options/00.theme-setup.php:161
 #@ lan-thinkupthemes
 msgid "Search Results for: "
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:186
+#: admin/main/options/00.theme-setup.php:176
 #@ lan-thinkupthemes
 msgid "Archived Article(s) by Author: "
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:188
+#: admin/main/options/00.theme-setup.php:178
 #@ lan-thinkupthemes
 msgid "Error 404 - Not Found."
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:218
+#: admin/main/options/00.theme-setup.php:208
 #@ lan-thinkupthemes
 msgid "Prev"
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:227
+#: admin/main/options/00.theme-setup.php:217
 #@ lan-thinkupthemes
 msgid "Next"
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:418
-#: admin/main/options/00.theme-setup.php:477
+#: admin/main/options/00.theme-setup.php:408
+#: admin/main/options/00.theme-setup.php:467
 #: lib/widgets/popularposts.php:95
 #@ lan-thinkupthemes
 msgid "No Comments"
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:419
-#: admin/main/options/00.theme-setup.php:479
+#: admin/main/options/00.theme-setup.php:409
+#: admin/main/options/00.theme-setup.php:469
 #: lib/widgets/popularposts.php:95
 #@ lan-thinkupthemes
 msgid "1 Comment"
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:420
-#: admin/main/options/00.theme-setup.php:475
+#: admin/main/options/00.theme-setup.php:410
+#: admin/main/options/00.theme-setup.php:465
 #: lib/widgets/popularposts.php:95
 #@ lan-thinkupthemes
 msgid "% Comments"
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:421
+#: admin/main/options/00.theme-setup.php:411
 #@ lan-thinkupthemes
 msgid "Comments Off"
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:433
+#: admin/main/options/00.theme-setup.php:423
 #@ lan-thinkupthemes
 msgid "Enter your password to view comments."
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:460
+#: admin/main/options/00.theme-setup.php:450
 #, php-format
 #@ lan-thinkupthemes
 msgid "Comment on %s"
 msgstr ""
 
-#: admin/main/options/00.theme-setup.php:559
+#: admin/main/options/00.theme-setup.php:549
 #@ lan-thinkupthemes
 msgid "Thumbs"
 msgstr ""
 
-#: admin/main/options/01.general-settings.php:282
-#: admin/main/options/01.general-settings.php:286
-#: admin/main/options/01.general-settings.php:308
+#: admin/main/options/01.general-settings.php:295
+#: admin/main/options/01.general-settings.php:299
+#: admin/main/options/01.general-settings.php:321
 #, php-format
 #@ lan-thinkupthemes
 msgid "%s"
 msgstr ""
 
-#: admin/main/options/01.general-settings.php:284
+#: admin/main/options/01.general-settings.php:297
 #, php-format
 #@ lan-thinkupthemes
 msgid "Blog Post Image: %s"
 msgstr ""
 
-#: admin/main/options/01.general-settings.php:288
+#: admin/main/options/01.general-settings.php:301
 #, php-format
 #@ lan-thinkupthemes
 msgid "Search Results: %s"
 msgstr ""
 
-#: admin/main/options/01.general-settings.php:290
+#: admin/main/options/01.general-settings.php:303
 #@ lan-thinkupthemes
 msgid "Page Not Found"
 msgstr ""
 
-#: admin/main/options/01.general-settings.php:292
+#: admin/main/options/01.general-settings.php:305
 #, php-format
 #@ lan-thinkupthemes
 msgid "Category Archives: %s"
 msgstr ""
 
-#: admin/main/options/01.general-settings.php:294
+#: admin/main/options/01.general-settings.php:307
 #, php-format
 #@ lan-thinkupthemes
 msgid "Tag Archives: %s"
 msgstr ""
 
-#: admin/main/options/01.general-settings.php:297
+#: admin/main/options/01.general-settings.php:310
 #, php-format
 #@ lan-thinkupthemes
 msgid "Author Archives: %s"
 msgstr ""
 
-#: admin/main/options/01.general-settings.php:300
+#: admin/main/options/01.general-settings.php:313
 #, php-format
 #@ lan-thinkupthemes
 msgid "Daily Archives: %s"
 msgstr ""
 
-#: admin/main/options/01.general-settings.php:302
+#: admin/main/options/01.general-settings.php:315
 #, php-format
 #@ lan-thinkupthemes
 msgid "Monthly Archives: %s"
 msgstr ""
 
-#: admin/main/options/01.general-settings.php:304
+#: admin/main/options/01.general-settings.php:317
 #, php-format
 #@ lan-thinkupthemes
 msgid "Yearly Archives: %s"
 msgstr ""
 
-#: admin/main/options/01.general-settings.php:306
+#: admin/main/options/01.general-settings.php:319
 #: admin/main/options.php:1081
 #@ lan-thinkupthemes
 #@ redux-framework
@@ -846,6 +846,10 @@ msgstr ""
 msgid "View all posts by %s"
 msgstr ""
 
+#: admin/main/options/02.homepage.php:52
+#: admin/main/options/02.homepage.php:271
+#: admin/main/options/02.homepage.php:287
+#: admin/main/options/02.homepage.php:303
 #: admin/main/options/05.blog.php:128
 #@ lan-thinkupthemes
 msgid "Read More"

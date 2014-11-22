@@ -5,13 +5,17 @@
 	// WPML filter
 	$suppress_filters = get_option('suppress_filters');
 
+	// Get Order & Orderby Parameters
+	$orderby = ( of_get_option('slider_posts_orderby') ) ? of_get_option('slider_posts_orderby') : 'date';
+	$order   = ( of_get_option('slider_posts_order') ) ? of_get_option('slider_posts_order') : 'DESC';
+
 	// query
 	$args = array(
 		'post_type'        => 'slider',
 		'posts_per_page'   => -1,
 		'post_status'      => 'publish',
-		'orderby'          => 'name',
-		'order'            => 'ASC',
+		'orderby'          => $orderby,
+		'order'            => $order,
 		'suppress_filters' => $suppress_filters
 		);
 	$slides = get_posts($args);
@@ -106,16 +110,20 @@
 			$post_array = (of_get_option('acc_show_post')=="") ? array() : of_get_option('acc_show_post');
 
 			foreach( $slides as $k => $slide ) {
-				// Unset not translated posts
-				if ( function_exists( 'wpml_get_language_information' ) ) {
+				//Check if WPML is activated
+				if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
 					global $sitepress;
 
-					$check              = wpml_get_language_information( $slide->ID );
-					$language_code      = substr( $check['locale'], 0, 2 );
-					if ( $language_code != $sitepress->get_current_language() ) unset( $slides[$k] );
-
+					$post_lang = $sitepress->get_language_for_element($slide->ID, 'post_slider');
+					$curr_lang = $sitepress->get_current_language();
+					// Unset not translated posts
+					if ( $post_lang != $curr_lang ) {
+						unset( $slides[$k] );
+					}
 					// Post ID is different in a second language Solution
-					if ( function_exists( 'icl_object_id' ) ) $slide = get_post( icl_object_id( $slide->ID, 'slider', true ) );
+					if ( function_exists( 'icl_object_id' ) ) {
+						$slide = get_post( icl_object_id( $slide->ID, 'slider', true ) );
+					}
 				}
 
 				if(in_array("1", $post_array)){
@@ -132,6 +140,7 @@
 				$url          = get_post_meta($slide->ID, 'my_slider_url', true);
 				$caption      = get_post_meta($slide->ID, 'my_slider_caption', true);
 				$sl_image_url = wp_get_attachment_image_src( get_post_thumbnail_id($slide->ID), 'slider-post-thumbnail');
+				$title        = get_the_title( $slide->ID );
 				$img_class    = "";
 
 				if($sl_image_url[0]==""){
@@ -145,7 +154,7 @@
 					$caption = stripslashes(htmlspecialchars_decode($caption));
 				}
 				echo '<li>';
-					echo '<img data-src="'.$sl_image_url[0].'" width="100%" height="auto" class="slider_img '.$img_class.'" alt="">';
+					echo '<img data-src="'.$sl_image_url[0].'" width="100%" height="auto" class="slider_img '.$img_class.'" alt="'.$title.'">';
 					if($caption!="" || $url!=""){
 						echo '<div class="accordion_caption">'.$caption.$url.'</div>';
 					}

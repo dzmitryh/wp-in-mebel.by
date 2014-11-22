@@ -34,7 +34,7 @@
                             <!--<option value="stroke" <?php /*if($LBS_Hover_Animation == 'stroke') echo "selected=selected"; */?>>Stroke</option>-->
                         </optgroup>
                     </select>
-                    <p class="description"><?php _e("Choose an animation effect apply on mouse hover.", WEBLIZAR_LBS_TEXT_DOMAIN); ?></p>
+                    <p class="description"><strong><?php _e("Choose an animation effect apply on mouse hover.", WEBLIZAR_LBS_TEXT_DOMAIN); ?></strong> (Upgrade to pro for get 6 more animation effect in plugin, check <a href="http://weblizar.com/lightbox-slider-pro/" target="_new">demo</a> )</p>
                 </td>
             </tr>
 
@@ -47,7 +47,7 @@
                             <option value="col-md-4" <?php if($LBS_Gallery_Layout == 'col-md-4') echo "selected=selected"; ?>><?php _e("Three Column", WEBLIZAR_LBS_TEXT_DOMAIN); ?></option>
                         </optgroup>
                     </select>
-                    <p class="description"><?php _e("Choose a column layout for image gallery.", WEBLIZAR_LBS_TEXT_DOMAIN); ?></p>
+                    <p class="description"><strong><?php _e("Choose a column layout for image gallery.", WEBLIZAR_LBS_TEXT_DOMAIN); ?></strong> (Upgrade to pro for get three more gallery layout in plugin, check <a href="http://weblizar.com/lightbox-slider-pro/" target="_new">demo</a> )</p>
                 </td>
             </tr>
 			<tr>
@@ -56,7 +56,7 @@
                     <input type="radio" name="lbs-gallery-title" id="lbs-gallery-title" value="yes" <?php if($LBS_Gallery_Title == 'yes' ) { echo "checked"; } ?>> Yes
                     <input type="radio" name="lbs-gallery-title" id="lbs-gallery-title" value="no" <?php if($LBS_Gallery_Title == 'no' ) { echo "checked"; } ?>> No
 
-                    <p class="description"><?php _e("Select yes if you want show gallery title .", WEBLIZAR_LBS_TEXT_DOMAIN); ?></p>
+                    <p class="description"><strong><?php _e("Select yes if you want show gallery title .", WEBLIZAR_LBS_TEXT_DOMAIN); ?></strong> </p>
                 </td>
             </tr>
             <tr>
@@ -65,7 +65,7 @@
                     <input type="radio" name="wl-hover-color" id="wl-hover-color" value="#74C9BE" <?php if($LBS_Hover_Color == '#74C9BE' ) { echo "checked"; } ?>> <span style="color: #74C9BE; font-size: large; font-weight: bolder;"><?php _e("Color 1", WEBLIZAR_LBS_TEXT_DOMAIN); ?></span>
                     <input type="radio" name="wl-hover-color" id="wl-hover-color" value="#31A3DD" <?php if($LBS_Hover_Color == '#31A3DD' ) { echo "checked"; } ?>> <span style="color: #31A3DD; font-size: large; font-weight: bolder;"><?php _e("Color 2", WEBLIZAR_LBS_TEXT_DOMAIN); ?></span>
 
-                    <p class="description"><?php _e("Choose a color apply on mouse hover.", WEBLIZAR_LBS_TEXT_DOMAIN); ?></p>
+                    <p class="description"><strong><?php _e("Choose a color apply on mouse hover.", WEBLIZAR_LBS_TEXT_DOMAIN); ?></strong> (Upgrade to pro for get Unlimited Color Scheme in plugin, check <a href="http://weblizar.com/lightbox-slider-pro/" target="_new">demo</a> )</p>
                 </td>
             </tr>
 
@@ -74,7 +74,7 @@
                 <td>
                     <input type="radio" name="wl-image-view-icon" id="wl-image-view-icon" value="fa-picture-o"  <?php if($LBS_Image_View_Icon == 'fa-picture-o' ) { echo "checked"; } ?>> <i class="fa fa-picture-o fa-2x"></i>
                     <input type="radio" name="wl-image-view-icon" id="wl-image-view-icon" value="fa-camera" <?php if($LBS_Image_View_Icon == 'fa-camera' ) { echo "checked"; } ?>> <i class="fa fa-camera fa-2x"></i>
-                    <p class="description"><?php _e("Choose image view icon.", WEBLIZAR_LBS_TEXT_DOMAIN); ?></p>
+                    <p class="description"><strong><?php _e("Choose image view icon.", WEBLIZAR_LBS_TEXT_DOMAIN); ?></strong> (Upgrade to pro for get Unlimited Font Awesome Icon in plugin, check <a href="http://weblizar.com/lightbox-slider-pro/" target="_new">demo</a> )</p>
                 </td>
             </tr>
 
@@ -102,10 +102,20 @@
                             <option value="_verdana"        <?php if($LBS_Font_Style == '_verdana' ) { echo "selected"; } ?>>Verdana</option>
                         </optgroup>
                     </select>
-                    <p class="description"><?php _e("Choose a caption font style.", WEBLIZAR_LBS_TEXT_DOMAIN); ?></p>
+                    <p class="description"><strong><?php _e("Choose a caption font style.", WEBLIZAR_LBS_TEXT_DOMAIN); ?></strong> (Upgrade to pro for get 500+ Google fonts in plugin, check <a href="http://weblizar.com/lightbox-slider-pro/" target="_new">demo</a> )</p>
                 </td>
             </tr>
-
+			<tr>
+                <th scope="row"><label><?php _e("Lightbox Style", WEBLIZAR_LBS_TEXT_DOMAIN); ?></label></th>
+                <td>
+                    <select >
+                        
+                            <option value="col-md-6" ><?php _e("Nivo box", WEBLIZAR_LBS_TEXT_DOMAIN); ?></option>
+                             
+                    </select>
+                    <p class="description"><strong><?php _e("Choose a lightbox For gallery. ", WEBLIZAR_LBS_TEXT_DOMAIN); ?></strong> (Upgrade to pro for get more 8 lightbox in plugin, check <a href="http://weblizar.com/lightbox-slider-pro/" target="_new">demo</a> )</p>
+                </td>
+            </tr>
 
 
         </tbody>

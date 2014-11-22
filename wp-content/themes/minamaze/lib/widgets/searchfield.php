@@ -27,9 +27,7 @@ class thinkup_widget_search extends WP_Widget {
 		$buttonswitch = $instance['buttonswitch'];
 		$buttontext   = $instance['buttontext'];
 
-		if ($buttonswitch == 'on') { $buttonswitch_check = 'checked=checked'; }
-
-		echo '<p><label for="' . $this->get_field_id('title') . '">Title: <input class="widefat" id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="text" value="' . esc_attr($title) . '" /></label></p>';
+		echo '<p><label for="' . $this->get_field_id('title') . '">' . __( 'Title', 'lan-thinkupthemes' ) . ': <input class="widefat" id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="text" value="' . esc_attr($title) . '" /></label></p>';
 	}
 
 	/* Assign variable values. */
@@ -56,7 +54,8 @@ class thinkup_widget_search extends WP_Widget {
 	}
 
 }
-add_action( 'widgets_init', create_function('', 'return register_widget("thinkup_widget_search");') );
 
-
+add_action( 'widgets_init', function(){
+     register_widget( 'thinkup_widget_search' );
+});
 ?>

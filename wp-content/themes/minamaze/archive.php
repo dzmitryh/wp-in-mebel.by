@@ -31,7 +31,6 @@ get_header(); ?>
 							<?php thinkup_input_blogmeta(); ?>
 
 							<?php thinkup_input_blogtext(); ?>
-							<?php thinkup_input_readmore(); ?>
 						</div>
 
 					<div class="clearboth"></div>
@@ -45,6 +44,6 @@ get_header(); ?>
 
 				<?php get_template_part( 'no-results', 'archive' ); ?>		
 
-			<?php endif; wp_reset_query(); ?>
+			<?php endif; ?>
 
 <?php get_footer() ?>

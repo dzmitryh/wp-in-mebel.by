@@ -1263,7 +1263,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                                 $section['title'],
                                 $this->args['page_cap'],
                                 $this->args['page_slug'] . '&tab=' . $k,
-                                create_function( '$a', "return null;" )
+								'__return_null'
                             );
                         }
 
@@ -1278,7 +1278,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                             __( 'Import / Export', 'redux-framework' ),
                             $this->args['page_cap'],
                             $this->args['page_slug'] . '&tab=import_export_default', 
-                            create_function( '$a', "return null;" )
+							'__return_null'
                         );
                     }
 
@@ -1289,7 +1289,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                             $tab['title'],
                             $this->args['page_cap'],
                             $this->args['page_slug'] . '&tab=' . $k, 
-                            create_function( '$a', "return null;" )
+							'__return_null'
                         );
                     }
 
@@ -1300,7 +1300,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                             __( 'Options Object', 'redux-framework' ),
                             $this->args['page_cap'],
                             $this->args['page_slug'] . '&tab=dev_mode_default',
-                            create_function('$a', "return null;")
+							'__return_null'
                         );
                     }
 
@@ -1311,7 +1311,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                             __( 'System Info', 'redux-framework' ),
                             $this->args['page_cap'],
                             $this->args['page_slug'] . '&tab=system_info_default',
-                            create_function( '$a', "return null;" )
+							'__return_null'
                         );
                     }
                 }
@@ -2186,20 +2186,6 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
                 echo '<a href="#" id="consolePrintObject" class="button">' . __( 'Show Object in Javascript Console Object', 'redux-framework' ) . '</a>';
                 // END Javascript object debug
-
-                echo '</div>';
-            }
-
-            if( $this->args['system_info'] === true ) {
-                require_once 'inc/sysinfo.php';
-                $system_info = new Simple_System_Info();
-
-                echo '<div id="system_info_default_section_group' . '" class="redux-group-tab">';
-                echo '<h3>' . __( 'System Info', 'redux-framework' ) . '</h3>';
-
-                echo '<div id="redux-system-info">';
-                echo $system_info->get( true );
-                echo '</div>';
 
                 echo '</div>';
             }

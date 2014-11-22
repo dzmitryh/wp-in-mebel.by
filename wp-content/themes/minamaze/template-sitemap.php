@@ -35,7 +35,7 @@ get_header(); ?>
 					  while(have_posts()): the_post();
 						 $category = get_the_category();
 					?>
-							<li><a href="<?php the_permalink() ?>"  title="Permanent Link to: <?php the_title(); ?>">
+							<li><a href="<?php the_permalink() ?>"  title="<?php _e( 'Permanent Link to', 'lan-thinkupthemes'); ?>: <?php the_title(); ?>">
 							<?php the_title(); ?></a></li>
 					   <?php endwhile; wp_reset_query(); ?>
 					  </ul>

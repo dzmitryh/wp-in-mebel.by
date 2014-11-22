@@ -10,26 +10,37 @@
 			items_count = $(".portfolio_item").size();
 
 		$(window).load(function(){
+			var selector = window.location.hash.replace( /^#category/, '.term' );
+
+			if(selector == "#"){
+				selector = '';
+			}
+
 			setColumnWidth();
 			$container.isotope({
 				itemSelector : '.portfolio_item',
 				hiddenClass : 'portfolio_hidden',
 				resizable : false,
 				transformsEnabled : true,
-				layoutMode: '<?php echo $layout_mode; ?>'
-			});
+				layoutMode: '<?php echo $layout_mode; ?>',
+				filter: selector
+			})
+
+			$('#filters .active').removeClass('active')
+			$('#filters li a[data-filter="'+selector+'"]').parent('li').addClass('active');
+			change_hash(selector)
 		});
-		
+
 		function getNumColumns(){
 			var $folioWrapper = $('#portfolio-grid').data('cols');
-			
+
 			if($folioWrapper == '2cols') {
 				var winWidth = $("#portfolio-grid").width(),
 					column = 2;
 				if (winWidth<380) column = 1;
 				return column;
 			}
-			
+
 			else if ($folioWrapper == '3cols') {
 				var winWidth = $("#portfolio-grid").width(),
 					column = 3;
@@ -39,7 +50,7 @@
 				else if(winWidth>=1160) column = 3;
 				return column;
 			}
-			
+
 			else if ($folioWrapper == '4cols') {
 				var winWidth = $("#portfolio-grid").width(),
 					column = 4;
@@ -50,7 +61,7 @@
 				return column;
 			}
 		}
-		
+
 		function setColumnWidth(){
 			var columns = getNumColumns(),
 				containerWidth = $("#portfolio-grid").width(),
@@ -79,6 +90,7 @@
 				return;
 			}
 
+
 			var $optionSet = $this.parents('.filter');
 			// change active class
 			$optionSet.find('.active').removeClass('active');
@@ -86,6 +98,7 @@
 
 			var selector = $(this).attr('data-filter');
 			$container.isotope({ filter: selector });
+			change_hash(selector)
 
 			var hiddenItems = 0,
 				showenItems = 0;
@@ -103,22 +116,35 @@
 			}
 			return false;
 		});
+		function change_hash(hash){
+			hash = hash.replace( /^.term/, 'category' );
+			window.location.href = '#'+hash;
+
+			$('.pagination a').each(function(){
+				var item = $(this),
+					href = item.attr('href'),
+					end_slice = href.indexOf('#')==-1 ? href.length : href.indexOf('#') ;
+
+				href = href.slice(0, end_slice);
+				item.attr({'href':href+'#'+hash})
+			})
+		}
 	});
 </script>
 
-<?php 
+<?php
 	$i = 1;
 	if ( have_posts() ) while ( have_posts() ) : the_post();
 
 	// post ID is different in a second language solution
 	if ( function_exists( 'icl_object_id' ) ) $post = get_post( icl_object_id( $post->ID, 'portfolio', true ) );
-	
+
 	// Get categories
 	$portfolio_cats = wp_get_object_terms($post->ID, 'portfolio_category');
-	
+
 	// Get tags
 	$portfolio_tags = !is_wp_error( wp_get_object_terms($post->ID, 'portfolio_tag')) ? wp_get_object_terms($post->ID, 'portfolio_tag') : array();
-	
+
 	// Theme Options vars
 	$folio_filter        = of_get_option('folio_filter');
 	$folio_title         = of_get_option('folio_title');
@@ -137,13 +163,13 @@
 	$thumb   = get_post_thumbnail_id();
 	$img_url = wp_get_attachment_url( $thumb,'full');
 	$image   = aq_resize( $img_url, $image_size['width'], $image_size['height'], true );
-	
+
 	//mediaType init
 	$mediaType = get_post_meta($post->ID, 'tz_portfolio_type', true);
 ?>
 	<li class="portfolio_item <?php foreach( $portfolio_cats as $portfolio_cat ) { echo ' term_id_' . $portfolio_cat->term_id; } ?> <?php foreach( $portfolio_tags as $portfolio_tag ) { echo ' term_id_' . $portfolio_tag->term_id; } ?>">
 		<div class="portfolio_item_holder">
-		<?php 
+		<?php
 			if ($lightbox == "yes") :
 				if ($mediaType == 'Image')
 					$prettyType = 'prettyPhoto';
@@ -232,9 +258,9 @@
 				<?php if($folio_excerpt == "yes"){ ?>
 					<p class="excerpt"><?php $excerpt = get_the_excerpt(); echo my_string_limit_words($excerpt,$folio_excerpt_count);?></p>
 				<?php } ?>
-				
+
 				<?php if($folio_btn == "yes"){
-					$button_text = of_get_option('folio_button_text') ? of_get_option('folio_button_text') : theme_locals("read_more") ;
+					$button_text = of_get_option('folio_button_text') ? apply_filters( 'cherry_text_translate', of_get_option('folio_button_text'), 'folio_button_text' ) : theme_locals("read_more") ;
 				?>
 					<p><a href="<?php the_permalink() ?>" class="btn btn-primary"><?php echo $button_text ?></a></p>
 				<?php } ?>

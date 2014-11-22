@@ -15,7 +15,7 @@ get_header(); ?>
 						<div class="entry-meta">
 							<?php
 								$metadata = wp_get_attachment_metadata();
-								printf( __( 'Published ', 'lan-thinkupthemes') . '<span><time datetime="%1$s">%2$s</time></span> at <a href="%3$s" title="Link to full-size image">%4$s &times; %5$s</a> in <a href="%6$s" title="Return to %7$s" rel="gallery">%8$s</a>',
+								printf( __( 'Published ', 'lan-thinkupthemes') . '<span><time datetime="%1$s">%2$s</time></span> at <a href="%3$s" title="' . __( 'Link to full-size image', 'lan-thinkupthemes') . '">%4$s &times; %5$s</a> in <a href="%6$s" title="' . __( 'Return to ', 'lan-thinkupthemes') . '%7$s" rel="gallery">%8$s</a>',
 									esc_attr( get_the_date( 'c' ) ),
 									esc_html( get_the_date() ),
 									wp_get_attachment_url(),
@@ -72,7 +72,7 @@ get_header(); ?>
 						</div><!-- .entry-attachment -->
 						
 						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '<div class="page-links">' . 'Pages:', 'after' => '</div>' ) ); ?>
+						<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages', 'lan-thinkupthemes') . ':', 'after' => '</div>' ) ); ?>
 
 					</div><!-- .entry-content -->
 				</article><!-- #post-<?php the_ID(); ?> -->

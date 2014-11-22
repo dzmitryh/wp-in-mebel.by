@@ -174,6 +174,9 @@
 			//Plugin Activation
 			include_once (CHILD_DIR . '/includes/register-plugins.php');
 
+			//Setup MotoPress
+			include_once (PARENT_DIR . '/includes/register-motopress.php');
+
 			//Include shop
 			if ( file_exists(get_stylesheet_directory().'/shop.php') ) {
 				include_once (CHILD_DIR . '/shop.php');
@@ -189,13 +192,13 @@
 	} else {
 		update_option('suppress_filters', 1);
 	}
-	//Register Flickr and recent posts widgets link label for translation
-	function wpml_link_text_filter( $link_text, $widget_title ) {
-		icl_translate( 'cherry', 'link_text_' . $widget_title, $link_text );
+	//Register text for translation
+	function cherry_wpml_translate_filter( $value, $name ) {
+		return icl_translate( 'cherry', $name, $value );
 	}
 	//Check if WPML is activated
 	if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
-		add_filter( 'widget_linktext', 'wpml_link_text_filter', 10, 2 );
+		add_filter( 'cherry_text_translate', 'cherry_wpml_translate_filter', 10, 2 );
 	}
 
 	//Loading Custom function
@@ -314,6 +317,7 @@
 		add_filter('excerpt_length', 'new_excerpt_length');
 	}
 
+	add_filter( 'the_excerpt', 'do_shortcode' );
 	// enable shortcodes in sidebar
 	add_filter('widget_text', 'do_shortcode');
 
@@ -369,7 +373,7 @@
 		add_action('admin_enqueue_scripts', 'myHelpPointers');
 
 		function myHelpPointers() {
-			//First we define our pointers 
+			//First we define our pointers
 			$pointers = array(
 				array(
 					'id'       => 'xyz1', // unique id for this pointer
@@ -377,7 +381,7 @@
 					'target'   => '#toplevel_page_options-framework', // the css selector for the pointer to be tied to, best to use ID's
 					'title'    => theme_locals("import_sample_data"),
 					'content'  => theme_locals("import_sample_data_desc"),
-					'position' => array( 
+					'position' => array(
 										'edge'   => 'left', //top, bottom, left, right
 										'align'  => 'left', //top, bottom, left, right, middle
 										)
@@ -396,7 +400,7 @@
 				// more as needed
 			);
 
-			//Now we instantiate the class and pass our pointer array to the constructor 
+			//Now we instantiate the class and pass our pointer array to the constructor
 			$myPointers = new WP_Help_Pointer($pointers);
 		};
 	}
@@ -506,7 +510,7 @@
 	}
 
 	function getCherryVersion(&$updateErrors) {
-		$style = TEMPLATEPATH . '/style.css';
+		$style = PARENT_DIR . '/style.css';
 		$themeVersion = 0;
 
 		if (function_exists('wp_get_theme')) {
@@ -584,7 +588,7 @@
 		$headerFooterCode = array('header' => null, 'footer' => null);
 
 		foreach ($headerFooter as $name) {
-			$filePath = TEMPLATEPATH . '/' . $name . '.php';
+			$filePath = PARENT_DIR . '/' . $name . '.php';
 			if (file_exists($filePath)) {
 				$content = file_get_contents($filePath);
 				if ($content) {
@@ -613,8 +617,8 @@
 	}
 
 	function writeLog($message) {
-		$logFile = TEMPLATEPATH . '/update.log';
-		if (is_writable(TEMPLATEPATH)) {
+		$logFile = PARENT_DIR . '/update.log';
+		if (is_writable(PARENT_DIR)) {
 			file_put_contents($logFile, $message . PHP_EOL, FILE_APPEND);
 		}
 	}
@@ -892,7 +896,7 @@
 		global $cherryTemplates;
 		global $headerFooterPattern;
 
-		$style = STYLESHEETPATH . '/style.css';
+		$style = CHILD_DIR . '/style.css';
 		$themeTemplate = false;
 
 		if (function_exists('wp_get_theme')) {
@@ -1079,7 +1083,7 @@
 							}
 							break;
 						case 'permalink':
-							if(of_get_option('post_permalink') != 'no'){ ?>
+							if(of_get_option('post_permalink') != 'no' && !is_singular()){ ?>
 								<div class="post_permalink">
 									<i class="icon-link"></i>
 									<?php echo $icon_tips_before.'<a href="'.get_permalink().'" title="'.get_the_title().'">'.theme_locals('permalink_to').'</a>'.$icon_tips_after; ?>
@@ -1186,6 +1190,12 @@
 							echo '<div class="post_meta_unite clearfix">';
 						break;
 						case 'end_unite':
+							echo '</div>';
+						break;
+						case 'start_group':
+							echo '<div class="meta_group clearfix">';
+						break;
+						case 'end_group':
 							echo '</div>';
 						break;
 					}
@@ -1295,6 +1305,7 @@
 			$post_tags = wp_get_post_terms($post->ID, $post_type.'_tag', array("fields" => "slugs"));
 			$tags_type = $post_type=='post' ? 'tag' : $post_type.'_tag' ;
 			$suppress_filters = get_option('suppress_filters');// WPML filter
+			$blog_related = apply_filters( 'cherry_text_translate', of_get_option('blog_related'), 'blog_related' );
 			if ($post_tags && !is_wp_error($post_tags)) {
 				$args = array(
 					"$tags_type" => implode(',', $post_tags),
@@ -1308,7 +1319,7 @@
 				query_posts($args);
 				if ( have_posts() ) {
 					$output = '<div class="'.$class.'">';
-					$output .= $display_title ? $before_title.of_get_option('blog_related', theme_locals("posts_std")).$after_title : '' ;
+					$output .= $display_title ? $before_title.$blog_related.$after_title : '' ;
 					$output .= '<ul class="'.$class_list.' clearfix">';
 					while( have_posts() ) {
 						the_post();
@@ -1477,6 +1488,19 @@
 	**/
 	add_action('after_cherry_theme_upgrade', 'cherry_plugin_unpack_package');
 	function cherry_plugin_unpack_package(){
+		$plugin = 'cherry-plugin/cherry-plugin.php';
+
+		if ( file_exists( WP_PLUGIN_DIR . '/' . $plugin ) ) {
+			return;
+		}
+
+		if ( !function_exists( 'is_plugin_active' ) ) {
+			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
+
+		if ( is_plugin_active( $plugin ) )
+			return;
+
 		$file   = PARENT_DIR . '/includes/plugins/cherry-plugin.zip';
 		$to     = WP_PLUGIN_DIR . '/cherry-plugin/';
 		$result = false;
@@ -1512,11 +1536,15 @@
 	function cherry_plugin_setup(){
 		$plugin = 'cherry-plugin/cherry-plugin.php';
 
-		if ( !function_exists('is_plugin_active') ) {
-			require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+		if ( file_exists( WP_PLUGIN_DIR . '/' . $plugin ) ) {
+			return;
 		}
 
-		if ( is_plugin_active($plugin) )
+		if ( !function_exists( 'is_plugin_active' ) ) {
+			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
+
+		if ( is_plugin_active( $plugin ) )
 			return;
 
 		$file   = PARENT_DIR . '/includes/plugins/cherry-plugin.zip';
@@ -1538,19 +1566,7 @@
 				return new WP_Error( 'incompatible_archive', __('The package could not be installed.', CURRENT_THEME), $result->get_error_data() );
 			}
 		}
-
-		if ( $result ) {
-			$current = get_option( 'active_plugins' );
-
-			if ( !in_array( $plugin, $current ) ) {
-				$current[] = $plugin;
-				sort( $current );
-				do_action( 'activate_plugin', trim($plugin) );
-				update_option( 'active_plugins', $current );
-				do_action( 'activate_' . trim($plugin) );
-				do_action( 'activated_plugin', trim($plugin) );
-			}
-		}
+		return $result;
 	}
 
 	/**
@@ -1587,41 +1603,4 @@
 			return $layout_class;
 		}
 	}
-
-	//////////////////////////////////
-	// TEMPING CODE begin
-	// the next update it's removed
-	//////////////////////////////////
-	add_action( 'init', 'clean_cherry_plugin_dir' );
-	function clean_cherry_plugin_dir() {
-		if ( is_admin() ) {
-
-			$old_plugin = 'cherry-plugin/cherry_plugin.php';
-
-			if ( file_exists( WP_PLUGIN_DIR . '/' . $old_plugin ) ) {
-
-				$current = get_option( 'active_plugins' );
-
-				if ( in_array( $old_plugin, $current ) ) {
-					foreach( $current as $key => $value ) {
-						if ( $value == $old_plugin ){
-							unset( $current[$key] );
-							sort( $current );
-							do_action( 'activate_plugin', trim($old_plugin) );
-							update_option( 'active_plugins', $current );
-							update_option( 'uninstall_plugins', array() );
-							do_action( 'activate_' . trim($old_plugin) );
-							do_action( 'activated_plugin', trim($old_plugin) );
-						}
-					}
-				}
-
-				// Fire unpack Cherry Plugin package
-				cherry_plugin_unpack_package();
-			}
-		}
-	}
-	//////////////////////////
-	// TEMPING CODE end //
-	//////////////////////////
 ?>

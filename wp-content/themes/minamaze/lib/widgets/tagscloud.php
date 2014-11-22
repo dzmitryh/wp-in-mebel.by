@@ -25,7 +25,7 @@ class thinkup_widget_tagscloud extends WP_Widget {
 
 		$title           = $instance['title'];
 
-		echo '<p><label for="' . $this->get_field_id('title') . '">Title: <input class="widefat" id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="text" value="' . esc_attr($title) . '" style="width: 95px;margin-left: 98px;" /></label></p>';
+		echo '<p><label for="' . $this->get_field_id('title') . '">' . __( 'Title', 'lan-thinkupthemes' ) . ': <input class="widefat" id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="text" value="' . esc_attr($title) . '" style="width: 95px;margin-left: 98px;" /></label></p>';
 
 	}
 
@@ -62,7 +62,8 @@ class thinkup_widget_tagscloud extends WP_Widget {
 	  }
 
 }
-add_action( 'widgets_init', create_function('', 'return register_widget("thinkup_widget_tagscloud");') );
 
-
+add_action( 'widgets_init', function(){
+     register_widget( 'thinkup_widget_tagscloud' );
+});
 ?>

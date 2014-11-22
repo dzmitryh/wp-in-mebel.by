@@ -15,7 +15,7 @@
  * so you must use get_template_directory_uri() if you want to use any of the built in icons
  *
  */
-function add_another_section($sections){
+function redux_add_another_section($sections){
     //$sections = array();
     $sections[] = array(
         'title' => __('A Section added by hook', 'redux-framework'),
@@ -28,7 +28,7 @@ function add_another_section($sections){
 
     return $sections;
 }
-add_filter('redux-opts-sections-redux-sample', 'add_another_section');
+add_filter('redux-opts-sections-redux-sample', 'redux_add_another_section');
 
 
 /*
@@ -36,12 +36,12 @@ add_filter('redux-opts-sections-redux-sample', 'add_another_section');
  * Custom function for filtering the args array given by a theme, good for child themes to override or add to the args array.
  *
  */
-function change_framework_args($args){
+function redux_change_framework_args($args){
     //$args['dev_mode'] = false;
     
     return $args;
 }
-//add_filter('redux-opts-args-redux-sample-file', 'change_framework_args');
+//add_filter('redux-opts-args-redux-sample-file', 'redux_change_framework_args');
 
 
 /*
@@ -52,7 +52,7 @@ function change_framework_args($args){
  * No $args are required, but they can be over ridden if needed.
  *
  */
-function setup_framework_options(){
+function redux_setup_framework_options(){
 
     $args = array();
 
@@ -94,7 +94,7 @@ function setup_framework_options(){
 				</ul>
 				<p class="theme-description"><?php echo $ct->display('Description'); ?></p>
 				<?php if ( $ct->parent() ) {
-					printf( ' <p class="howto">' . __( 'This <a href="%1$s">child theme</a> requires its parent theme, %2$s.' ) . '</p>',
+					printf( ' <p class="howto">' . __( 'This <a href="%1$s">child theme</a> requires its parent theme, %2$s.', 'redux-framework' ) . '</p>',
 						__( 'http://codex.wordpress.org/Child_Themes', 'redux-framework' ),
 						$ct->parent()->display( 'Name' ) );
 				} ?>
@@ -107,17 +107,6 @@ function setup_framework_options(){
 		$item_info = ob_get_contents();
 		    
 		ob_end_clean();
-
-
-	if( file_exists( dirname(__FILE__).'/info-html.html' )) {
-		global $wp_filesystem;
-		if (empty($wp_filesystem)) {
-			require_once(ABSPATH .'/wp-admin/includes/file.php');
-			WP_Filesystem();
-		}  		
-		$sampleHTML = $wp_filesystem->get_contents(dirname(__FILE__).'/info-html.html');
-	}
-
 
     // Setting dev mode to true allows you to view the class settings/info in the panel.
     // Default: true
@@ -350,7 +339,7 @@ function setup_framework_options(){
 				'subtitle' => __('Input a message to display as your site title. Leave blank to display your default site title.', 'redux-framework'),
 				'id'=>'thinkup_general_sitetitle',
 				'type' => 'text',
-				'validate' => 'no_special_chars',
+				'validate' => 'html',
 				),
 
 			array(
@@ -358,7 +347,7 @@ function setup_framework_options(){
 				'subtitle' => __('Input a message to display as site description. Leave blank to display default site description.', 'redux-framework'),
 				'id'=>'thinkup_general_sitedescription',
 				'type' => 'text',
-				'validate' => 'no_special_chars',
+				'validate' => 'html',
 				),
 
 			array(
@@ -445,6 +434,7 @@ function setup_framework_options(){
 				'subtitle' => __('Developers can use this to apply custom jQuery which will only affect the front end of the website.<br /><br />Use this to control your site by adding great jQuery features.', 'redux-framework'),
 				'id'=>'thinkup_general_customjavafront',
 				'type' => 'textarea',
+				'validate' => 'html',
 				),
 
 			array(
@@ -511,7 +501,7 @@ function setup_framework_options(){
 				),
 
 			array(
-				'title' => __('Enable Homepage Slider', 'redux-framework-demo'), 
+				'title' => __('Enable Homepage Slider', 'redux-framework'), 
 				'subtitle' => __('Switch on to enable home page slider.', 'redux-framework'),
 				'id'=>'thinkup_homepage_sliderswitch',
 				'type' => 'button_set',
@@ -532,14 +522,14 @@ function setup_framework_options(){
 				),
 
 			array(
-				'title' => __('Built-In Slider', 'redux-framework-demo'),
-				'subtitle'=> __('Unlimited slides with drag and drop sortings.', 'redux-framework-demo'),
+				'title' => __('Built-In Slider', 'redux-framework'),
+				'subtitle'=> __('Unlimited slides with drag and drop sortings.', 'redux-framework'),
 				'id'=>'thinkup_homepage_sliderpreset',
 				'type' => 'slides',
 				),
 
 			array(
-                'title' => __('Enable Full-Width Slider', 'redux-framework-demo'),
+                'title' => __('Enable Full-Width Slider', 'redux-framework'),
 				'subtitle' => __('Switch on to enable full-width slider.', 'redux-framework'),
 				'id'=>'thinkup_homepage_sliderpresetwidth',
 				'type' => 'switch',
@@ -550,7 +540,7 @@ function setup_framework_options(){
 				'id'=>'thinkup_homepage_sliderpresetheight',
 				'type' => 'slider', 
 				'title' => __('Slider Height (Max)', 'redux-framework-demo'),
-				'subtitle'=> __('Specify the maximum slider height (px).', 'redux-framework-demo'),
+				'subtitle'=> __('Specify the maximum slider height (px).', 'redux-framework'),
 				"default" => "350",
 				"min"     => "200",
 				"step"    => "5",
@@ -1373,7 +1363,7 @@ function setup_framework_options(){
     $ReduxFramework = new ReduxFramework($sections, $args, $tabs);
 
 }
-add_action('init', 'setup_framework_options', 0);
+add_action('init', 'redux_setup_framework_options', 0);
 
 
 /*
@@ -1381,7 +1371,7 @@ add_action('init', 'setup_framework_options', 0);
  * Custom function for the callback referenced above
  *
  */
-function my_custom_field($field, $value) {
+function redux_my_custom_field($field, $value) {
     print_r($field);
     print_r($value);
 }
@@ -1391,7 +1381,7 @@ function my_custom_field($field, $value) {
  * Custom function for the callback validation referenced above
  *
  */
-function validate_callback_function($field, $value, $existing_value) {
+function redux_validate_callback_function($field, $value, $existing_value) {
     $error = false;
     $value =  'just testing';
     /*
@@ -1417,17 +1407,17 @@ function validate_callback_function($field, $value, $existing_value) {
 	This is a test function that will let you see when the compiler hook occurs. 
 	It only runs if a field	set with compiler=>true is changed.
 */
-function testCompiler() {
+function redux_testCompiler() {
 	//echo "Compiler hook!";
 }
-add_action('redux-compiler-redux-sample-file', 'testCompiler');
+add_action('redux-compiler-redux-sample-file', 'redux_testCompiler');
 
 
 
 /**
 	Use this function to hide the activation notice telling users about a sample panel.
 **/
-function removeReduxAdminNotice() {
+function redux_removeReduxAdminNotice() {
 	delete_option('REDUX_FRAMEWORK_PLUGIN_ACTIVATED_NOTICES');
 }
-add_action('redux_framework_plugin_admin_notice', 'removeReduxAdminNotice');
+add_action('redux_framework_plugin_admin_notice', 'redux_removeReduxAdminNotice');

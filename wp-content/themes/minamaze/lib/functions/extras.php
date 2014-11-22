@@ -57,7 +57,7 @@ function thinkup_input_wptitle( $title, $sep ) {
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 )
-		$title .= " $sep " . sprintf( 'Page %s', max( $paged, $page ) );
+		$title .= " $sep " . sprintf( __( 'Page', 'lan-thinkupthemes' ) . ' %s', max( $paged, $page ) );
 
 	return $title;
 }

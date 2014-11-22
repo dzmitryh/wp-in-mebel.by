@@ -15,6 +15,6 @@ get_header(); ?>
 
 				<?php thinkup_input_allowcomments(); ?>
 
-			<?php endwhile; wp_reset_query(); ?>
+			<?php endwhile; ?>
 
 <?php get_footer(); ?>

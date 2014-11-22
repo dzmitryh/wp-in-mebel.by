@@ -129,7 +129,7 @@
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
-if( !class_exists( 'Browser' ) ) {
+if( !class_exists( 'thinkup_redux_Browser' ) ) {
 
     /**
      * Browser detection class
@@ -137,7 +137,7 @@ if( !class_exists( 'Browser' ) ) {
      * @author      Chris Schuld
      * @since       1.0
      */
-    class Browser {
+    class thinkup_redux_Browser {
         public $_agent              = '';
         public $_browser_name       = '';
         public $_version            = '';
