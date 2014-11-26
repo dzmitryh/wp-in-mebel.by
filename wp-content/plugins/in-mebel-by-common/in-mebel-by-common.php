@@ -1,6 +1,6 @@
 <?php
 /*
- Plugin Name: in-mebel.by common things plugin
+ Plugin Name: In-mebel.by plugin
  Description: This plugin handles some custom elements for in-mebel.by
  Author: Dzmitry H
  Version: 1.0
