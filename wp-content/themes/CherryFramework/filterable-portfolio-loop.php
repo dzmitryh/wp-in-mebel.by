@@ -192,11 +192,13 @@
 				$link_title = theme_locals("permanent_link_to").' '.get_the_title($post->ID);
 				$link_rel   = '';
 				unset($zoom_icon);
-			} ?>
+			}
+			//echo $link_title;
+			?>
 
 			<?php if (has_post_thumbnail()) { ?>
 			<figure class="thumbnail thumbnail__portfolio">
-				<a href="<?php echo $link_href; ?>" class="image-wrap" title="<?php echo $link_title; ?>" <?php echo $link_rel; ?>>
+				<a href="<?php echo $link_href; ?>" class="image-wrap" title="<?php echo get_the_excerpt(); ?>" <?php echo $link_rel; ?>>
 					<img src="<?php echo $image ?>" alt="<?php the_title(); ?>" />
 					<?php if (isset($zoom_icon)) echo $zoom_icon; ?>
 				</a>
