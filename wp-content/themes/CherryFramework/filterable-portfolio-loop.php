@@ -216,6 +216,7 @@
 					'post_status'    => null,
 					'numberposts'    => -1
 				) );
+
 				// output attachments
 				if ( $images ) {
 					$attachment_counter = 0;
@@ -225,6 +226,9 @@
 							$image_attributes = wp_get_attachment_image_src( $attachment_id, 'full' ); // returns an array
 							$image            = aq_resize( $image_attributes[0], $image_size['width'], $image_size['height'], true );
 							$image_title      = $attachment->post_title;
+							$image_excerpt    = $attachment->post_excerpt;
+
+							//echo "excerpt: ".$image_excerpt."content: ".$attachment->post_content."title: ".$attachment->post_title;
 
 							if (!$attachment_counter && !has_post_thumbnail()) {
 								if ($lightbox == "yes") {
@@ -243,8 +247,9 @@
 								$link_style = 'display:none';
 								unset($img_tag);
 								unset($zoom_icon);
-							} ?>
-					<?php echo $figure_before; ?><a href="<?php echo $link_href; ?>" class="image-wrap" title="<?php the_title(); ?>" style="<?php echo $link_style; ?>" <?php echo $link_rel; ?>><?php if (isset($img_tag)) echo $img_tag; if (isset($zoom_icon)) echo $zoom_icon; ?></a><?php echo $figure_after; ?>
+							} 
+							?>
+					<?php echo $figure_before; ?><a href="<?php echo $link_href; ?>" class="image-wrap" title="<?php echo $image_excerpt; ?>" style="<?php echo $link_style; ?>" <?php echo $link_rel; ?>><?php if (isset($img_tag)) echo $img_tag; if (isset($zoom_icon)) echo $zoom_icon; ?></a><?php echo $figure_after; ?>
 					<?php $attachment_counter++;
 					}
 				}
